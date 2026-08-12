@@ -376,7 +376,7 @@
     width: 100%;
     aspect-ratio: 3 / 3.6;
     object-fit: cover;
-    object-position: center top;
+    object-position: center;
   }
   .pardava-person__body { padding: 18px 18px 22px; }
   .pardava-person__role { color: var(--pardava-color-gold); font-size: .82rem; }
