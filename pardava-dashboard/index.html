@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>پرداوا | پنل تحلیل داده</title>
+  <meta name="description" content="متن تستی: پنل تحلیل داده پرداوا با نمودار، شاخص و گزارش‌های نمایشی.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <div class="pardava-app" id="pardava-app">
+    <aside class="pardava-sidebar" id="pardava-sidebar">
+      <a class="pardava-brand" href="#pardava-view-overview" data-pardava-view="overview">
+        <span class="pardava-brand__mark" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.6"/><path d="M12 7v5l3 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="12" r="2" fill="currentColor"/></svg>
+        </span>
+        <span><b>پرداوا</b><small>آنالیتیکس — متن تستی</small></span>
+      </a>
+      <nav class="pardava-nav" id="pardava-nav" aria-label="منوی پنل">
+        <p class="pardava-nav__group">عملیات</p>
+        <button class="pardava-nav__btn is-active" type="button" data-pardava-view="overview">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+          <span class="pardava-nav__label">نمای کلی</span>
+        </button>
+        <button class="pardava-nav__btn" type="button" data-pardava-view="sales">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 19V5M4 19h16"/><path d="M8 15l3-4 3 2 5-7"/></svg>
+          <span class="pardava-nav__label">فروش</span>
+        </button>
+        <button class="pardava-nav__btn" type="button" data-pardava-view="traffic">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="8"/><path d="M3 12h18M12 4a14 14 0 010 16M12 4a14 14 0 000 16"/></svg>
+          <span class="pardava-nav__label">ترافیک</span>
+        </button>
+        <button class="pardava-nav__btn" type="button" data-pardava-view="reports">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M7 3h8l5 5v13a1 1 0 01-1 1H7a1 1 0 01-1-1V4a1 1 0 011-1z"/><path d="M15 3v5h5M8 13h8M8 17h5"/></svg>
+          <span class="pardava-nav__label">گزارش‌ها</span>
+        </button>
+        <p class="pardava-nav__group">سامانه</p>
+        <button class="pardava-nav__btn" type="button" data-pardava-view="alerts">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 4a6 6 0 016 6c0 7 2 7 2 7H4s2 0 2-7a6 6 0 016-6z"/><path d="M10 19a2 2 0 004 0"/></svg>
+          <span class="pardava-nav__label">هشدارها</span>
+          <span class="pardava-nav__badge">۵</span>
+        </button>
+        <button class="pardava-nav__btn" type="button" data-pardava-view="settings">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 00.3 1.8l.1.1a2 2 0 01-2.8 2.8l-.1-.1a1.7 1.7 0 00-1.8-.3 1.7 1.7 0 00-1 1.5V21a2 2 0 01-4 0v-.1a1.7 1.7 0 00-1-1.5 1.7 1.7 0 00-1.8.3l-.1.1a2 2 0 01-2.8-2.8l.1-.1a1.7 1.7 0 00.3-1.8 1.7 1.7 0 00-1.5-1H3a2 2 0 010-4h.1a1.7 1.7 0 001.5-1 1.7 1.7 0 00-.3-1.8l-.1-.1a2 2 0 012.8-2.8l.1.1a1.7 1.7 0 001.8.3H9a1.7 1.7 0 001-1.5V3a2 2 0 014 0v.1a1.7 1.7 0 001 1.5 1.7 1.7 0 001.8-.3l.1-.1a2 2 0 012.8 2.8l-.1.1a1.7 1.7 0 00-.3 1.8V9c.3.6.9 1 1.5 1H21a2 2 0 010 4h-.1a1.7 1.7 0 00-1.5 1z"/></svg>
+          <span class="pardava-nav__label">تنظیمات</span>
+        </button>
+      </nav>
+      <div class="pardava-sidefoot">
+        <span class="pardava-avatar">پ</span>
+        <span>
+          <b>کیان رستمی</b><br>
+          <small class="pardava-note">تحلیلگر نمایشی</small>
+        </span>
+      </div>
+    </aside>
+
+    <div class="pardava-shell">
+      <header class="pardava-top">
+        <button class="pardava-iconbtn" id="pardava-burger" type="button" aria-label="منو">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16M4 12h16M4 17h10"/></svg>
+        </button>
+        <label class="pardava-search">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3-3"/></svg>
+          <input id="pardava-search" type="search" placeholder="جستجوی گزارش، کمپین یا استان — متن تستی">
+        </label>
+        <div class="pardava-top__tools">
+          <div class="pardava-period" id="pardava-period" role="group" aria-label="بازه زمانی">
+            <button type="button" data-pardava-range="7">۷ روز</button>
+            <button type="button" class="is-on" data-pardava-range="30">۳۰ روز</button>
+            <button type="button" data-pardava-range="90">۹۰ روز</button>
+          </div>
+          <div class="pardava-bellwrap">
+            <button class="pardava-iconbtn" id="pardava-bell" type="button" aria-label="اعلان‌ها">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 4a6 6 0 016 6c0 7 2 7 2 7H4s2 0 2-7a6 6 0 016-6z"/><path d="M10 19a2 2 0 004 0"/></svg>
+            </button>
+            <div class="pardava-drop" id="pardava-bell-drop">
+              <p class="pardava-note">اعلان‌های آزمایشی</p>
+              <p>نرخ پرش از آستانه گذشت.</p>
+              <p>پشتیبان‌گیری شبانه کامل شد.</p>
+              <p>کمپین شمال ۲٪ رشد کرد.</p>
+            </div>
+          </div>
+          <button class="pardava-btn pardava-btn--brass" id="pardava-export" type="button">خروجی CSV</button>
+        </div>
+      </header>
+
+      <main class="pardava-main">
+        <section class="pardava-view is-on" id="pardava-view-overview" data-pardava-title="نمای کلی">
+          <div class="pardava-pagehead">
+            <div>
+              <p class="pardava-kicker">داشبورد عملیاتی</p>
+              <h1 class="pardava-title">نمای کلی عملکرد</h1>
+              <p class="pardava-note">اعداد و نمودارها تستی هستند و داده واقعی نیستند.</p>
+            </div>
+            <p class="pardava-note" id="pardava-clock">۱۲ مرداد ۱۴۰۴ — بازه ۳۰ روز</p>
+          </div>
+          <div class="pardava-grid">
+            <article class="pardava-card pardava-kpi pardava-span-3">
+              <div class="pardava-card__head"><h3>درآمد خالص</h3><span class="pardava-delta is-up" id="pardava-d1">+۱۲٪</span></div>
+              <b id="pardava-k1">۱۸٫۴ میلیارد</b>
+              <p>تومان — متن تستی</p>
+              <svg class="pardava-spark" id="pardava-sp1" viewBox="0 0 120 42" preserveAspectRatio="none"></svg>
+            </article>
+            <article class="pardava-card pardava-kpi pardava-span-3">
+              <div class="pardava-card__head"><h3>سفارش‌ها</h3><span class="pardava-delta is-up" id="pardava-d2">+۸٪</span></div>
+              <b id="pardava-k2">۴٬۲۱۸</b>
+              <p>تراکنش نمایشی</p>
+              <svg class="pardava-spark" id="pardava-sp2" viewBox="0 0 120 42" preserveAspectRatio="none"></svg>
+            </article>
+            <article class="pardava-card pardava-kpi pardava-span-3">
+              <div class="pardava-card__head"><h3>نرخ تبدیل</h3><span class="pardava-delta is-down" id="pardava-d3">−۰٫۴٪</span></div>
+              <b id="pardava-k3">۳٫۸٪</b>
+              <p>از بازدید تا خرید تستی</p>
+              <svg class="pardava-spark" id="pardava-sp3" viewBox="0 0 120 42" preserveAspectRatio="none"></svg>
+            </article>
+            <article class="pardava-card pardava-kpi pardava-span-3">
+              <div class="pardava-card__head"><h3>میانگین سبد</h3><span class="pardava-delta is-up" id="pardava-d4">+۵٪</span></div>
+              <b id="pardava-k4">۴٫۳ میلیون</b>
+              <p>تومان به ازای سفارش</p>
+              <svg class="pardava-spark" id="pardava-sp4" viewBox="0 0 120 42" preserveAspectRatio="none"></svg>
+            </article>
+
+            <article class="pardava-card pardava-span-8">
+              <div class="pardava-card__head"><h3>روند درآمد</h3><span>میلیارد تومان — تستی</span></div>
+              <svg class="pardava-chart" id="pardava-area" viewBox="0 0 640 240" preserveAspectRatio="none"></svg>
+            </article>
+            <article class="pardava-card pardava-span-4">
+              <div class="pardava-card__head"><h3>کانال جذب</h3><span>سهم نمایشی</span></div>
+              <svg class="pardava-chart pardava-chart--sm" id="pardava-donut" viewBox="0 0 220 180"></svg>
+              <div class="pardava-legend" id="pardava-donut-leg"></div>
+            </article>
+
+            <article class="pardava-card pardava-span-6">
+              <div class="pardava-card__head"><h3>فروش دسته‌ها</h3><span>هفته جاری تستی</span></div>
+              <svg class="pardava-chart pardava-chart--sm" id="pardava-bars" viewBox="0 0 520 180" preserveAspectRatio="none"></svg>
+            </article>
+            <article class="pardava-card pardava-span-6">
+              <div class="pardava-card__head"><h3>استان‌های برتر</h3><span>سهم سفارش</span></div>
+              <div id="pardava-regions"></div>
+            </article>
+
+            <article class="pardava-card pardava-span-4">
+              <div class="pardava-card__head"><h3>سلامت قیف</h3><span>شاخص ترکیبی</span></div>
+              <svg class="pardava-chart pardava-chart--sm" id="pardava-gauge" viewBox="0 0 220 160"></svg>
+              <p class="pardava-statline"><span>هدف ۷۸</span><span id="pardava-gauge-val">۷۴ از ۱۰۰</span></p>
+            </article>
+            <article class="pardava-card pardava-span-4">
+              <div class="pardava-card__head"><h3>نقشه حرارت ساعتی</h3><span>۱۲ ستون × ۷ روز</span></div>
+              <div class="pardava-heat" id="pardava-heat"></div>
+            </article>
+            <article class="pardava-card pardava-span-4">
+              <div class="pardava-card__head"><h3>رخداد زنده</h3><span>فید تستی</span></div>
+              <div class="pardava-feed" id="pardava-feed"></div>
+            </article>
+
+            <article class="pardava-card pardava-span-8">
+              <div class="pardava-card__head"><h3>کمپین‌های فعال</h3><span>جدول آزمایشی</span></div>
+              <div class="pardava-tablewrap">
+                <table class="pardava-table" id="pardava-table">
+                  <thead>
+                    <tr>
+                      <th data-pardava-sort="name">کمپین</th>
+                      <th data-pardava-sort="ch">کانال</th>
+                      <th data-pardava-sort="rev">درآمد</th>
+                      <th data-pardava-sort="cvr">تبدیل</th>
+                      <th>وضعیت</th>
+                    </tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+              <div class="pardava-pager" id="pardava-pager"></div>
+            </article>
+            <article class="pardava-card pardava-span-4">
+              <figure class="pardava-media">
+                <img src="assets/images/navy.jpg" alt="نمای شب زمین از مدار — تصویر تزئینی پنل" width="1100" height="732">
+                <figcaption>پوشش شبانه شبکه — تصویر تستی</figcaption>
+              </figure>
+              <p class="pardava-note" style="margin-top:10px">این کارت فقط اتمسفر سرمه‌ای پنل را نشان می‌دهد و داده واقعی نیست.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="pardava-view" id="pardava-view-sales" data-pardava-title="فروش">
+          <div class="pardava-pagehead">
+            <div>
+              <p class="pardava-kicker">تحلیل درآمد</p>
+              <h1 class="pardava-title">فروش و قیف</h1>
+              <p class="pardava-note">مقایسه هدف و تحقق — متن آزمایشی.</p>
+            </div>
+          </div>
+          <div class="pardava-grid">
+            <article class="pardava-card pardava-kpi pardava-span-4"><h3>تحقق هدف</h3><b>۹۲٪</b><p>از بودجه فصل تستی</p></article>
+            <article class="pardava-card pardava-kpi pardava-span-4"><h3>بازگشت کالا</h3><b>۱٫۶٪</b><p>پایین‌تر از آستانه</p></article>
+            <article class="pardava-card pardava-kpi pardava-span-4"><h3>مشتری تکراری</h3><b>۴۱٪</b><p>سفارش دوم به بعد</p></article>
+            <article class="pardava-card pardava-span-8">
+              <div class="pardava-card__head"><h3>هدف در برابر تحقق</h3><span>دو سری تستی</span></div>
+              <svg class="pardava-chart" id="pardava-dual" viewBox="0 0 640 240" preserveAspectRatio="none"></svg>
+            </article>
+            <article class="pardava-card pardava-span-4">
+              <div class="pardava-card__head"><h3>قیف فروش</h3><span>مرحله به مرحله</span></div>
+              <ul class="pardava-funnel">
+                <li><span>بازدید</span><b>۱۲۴ هزار</b></li>
+                <li><span>سبد</span><b>۱۸٫۲ هزار</b></li>
+                <li><span>پرداخت</span><b>۵٫۱ هزار</b></li>
+                <li><span>تحویل</span><b>۴٫۸ هزار</b></li>
+              </ul>
+            </article>
+            <article class="pardava-card pardava-span-6">
+              <figure class="pardava-media" style="height:220px">
+                <img src="assets/images/city.jpg" alt="نمای معماری شهری — تصویر تزئینی" width="800" height="533">
+                <figcaption>تمرکز فروش شهری — تصویر تستی</figcaption>
+              </figure>
+            </article>
+            <article class="pardava-card pardava-span-6">
+              <figure class="pardava-media" style="height:220px">
+                <img src="assets/images/map.jpg" alt="نقشه چوبی جهان — تصویر تزئینی" width="800" height="546">
+                <figcaption>پراکندگی نمایشی بازار — تصویر تستی</figcaption>
+              </figure>
+            </article>
+          </div>
+        </section>
+
+        <section class="pardava-view" id="pardava-view-traffic" data-pardava-title="ترافیک">
+          <div class="pardava-pagehead">
+            <div>
+              <p class="pardava-kicker">ورود کاربران</p>
+              <h1 class="pardava-title">ترافیک و منابع</h1>
+              <p class="pardava-note">منابع، دستگاه و صفحات — داده ساختگی.</p>
+            </div>
+          </div>
+          <div class="pardava-grid">
+            <article class="pardava-card pardava-kpi pardava-span-3"><h3>جلسه</h3><b>۸۶٬۴۲۰</b><p>بازدید یکتا تستی</p></article>
+            <article class="pardava-card pardava-kpi pardava-span-3"><h3>نرخ پرش</h3><b>۳۴٪</b><p>آستانه ۴۰٪</p></article>
+            <article class="pardava-card pardava-kpi pardava-span-3"><h3>زمان در صفحه</h3><b>۲:۱۸</b><p>دقیقه میانگین</p></article>
+            <article class="pardava-card pardava-kpi pardava-span-3"><h3>صفحات / جلسه</h3><b>۳٫۴</b><p>عمق پیمایش</p></article>
+            <article class="pardava-card pardava-span-8">
+              <div class="pardava-card__head"><h3>ترافیک ساعتی</h3><span>۲۴ ساعت گذشته</span></div>
+              <svg class="pardava-chart" id="pardava-hourly" viewBox="0 0 640 240" preserveAspectRatio="none"></svg>
+            </article>
+            <article class="pardava-card pardava-span-4">
+              <div class="pardava-card__head"><h3>دستگاه</h3><span>سهم جلسه</span></div>
+              <div id="pardava-devices"></div>
+            </article>
+            <article class="pardava-card pardava-span-12">
+              <div class="pardava-card__head"><h3>صفحات پربازدید</h3><span>ده ردیف تستی</span></div>
+              <div class="pardava-tablewrap">
+                <table class="pardava-table" id="pardava-pages">
+                  <thead><tr><th>مسیر</th><th>جلسه</th><th>پرش</th><th>تبدیل</th></tr></thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="pardava-view" id="pardava-view-reports" data-pardava-title="گزارش‌ها">
+          <div class="pardava-pagehead">
+            <div>
+              <p class="pardava-kicker">آرشیو</p>
+              <h1 class="pardava-title">گزارش‌های قابل خروجی</h1>
+              <p class="pardava-note">فیلتر و صفحه‌بندی آزمایشی.</p>
+            </div>
+            <button class="pardava-btn" id="pardava-print" type="button">چاپ نما</button>
+          </div>
+          <div class="pardava-grid">
+            <article class="pardava-card pardava-span-12">
+              <div class="pardava-card__head">
+                <h3>فهرست گزارش</h3>
+                <select id="pardava-report-kind">
+                  <option value="all">همه انواع</option>
+                  <option value="sales">فروش</option>
+                  <option value="ops">عملیات</option>
+                  <option value="risk">ریسک</option>
+                </select>
+              </div>
+              <div class="pardava-tablewrap">
+                <table class="pardava-table" id="pardava-reports">
+                  <thead><tr><th>عنوان</th><th>نوع</th><th>بازه</th><th>مالک</th><th>وضعیت</th></tr></thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="pardava-view" id="pardava-view-alerts" data-pardava-title="هشدارها">
+          <div class="pardava-pagehead">
+            <div>
+              <p class="pardava-kicker">پایش</p>
+              <h1 class="pardava-title">هشدارها و آستانه‌ها</h1>
+              <p class="pardava-note">پنج رخداد ساختگی برای نمایش شدت.</p>
+            </div>
+          </div>
+          <div class="pardava-grid">
+            <article class="pardava-card pardava-span-8" id="pardava-alert-list"></article>
+            <article class="pardava-card pardava-span-4">
+              <div class="pardava-card__head"><h3>توزیع شدت</h3><span>۳۰ روز</span></div>
+              <svg class="pardava-chart pardava-chart--sm" id="pardava-alert-bars" viewBox="0 0 280 180" preserveAspectRatio="none"></svg>
+              <figure class="pardava-media" style="margin-top:12px;height:120px">
+                <img src="assets/images/texture.jpg" alt="بافت فلزی تیره — تصویر تزئینی" width="800" height="533">
+                <figcaption>بافت استیل آنتیک — تستی</figcaption>
+              </figure>
+            </article>
+          </div>
+        </section>
+
+        <section class="pardava-view" id="pardava-view-settings" data-pardava-title="تنظیمات">
+          <div class="pardava-pagehead">
+            <div>
+              <p class="pardava-kicker">پیکربندی نمایشی</p>
+              <h1 class="pardava-title">تنظیمات پنل</h1>
+              <p class="pardava-note">فرم ذخیره نمی‌شود؛ فقط ساختار قالب است.</p>
+            </div>
+          </div>
+          <div class="pardava-grid">
+            <article class="pardava-card pardava-span-6">
+              <form class="pardava-form" id="pardava-form">
+                <div class="pardava-field">
+                  <label for="pardava-org">نام سازمان</label>
+                  <input id="pardava-org" value="گالری داده پرداوا — تستی">
+                </div>
+                <div class="pardava-field">
+                  <label for="pardava-tz">منطقه زمانی</label>
+                  <select id="pardava-tz">
+                    <option>تهران (UTC+۳:۳۰)</option>
+                    <option>دبی (UTC+۴)</option>
+                  </select>
+                </div>
+                <div class="pardava-field">
+                  <label for="pardava-mail">ایمیل گزارش</label>
+                  <input id="pardava-mail" value="ops@pardava.test">
+                </div>
+                <button class="pardava-btn pardava-btn--brass" type="submit">ذخیره آزمایشی</button>
+              </form>
+            </article>
+            <article class="pardava-card pardava-span-6">
+              <div class="pardava-switch"><span>اعلان نرخ پرش</span><button class="pardava-toggle is-on" type="button" data-pardava-toggle></button></div>
+              <div class="pardava-switch"><span>خلاصه روزانه ایمیل</span><button class="pardava-toggle is-on" type="button" data-pardava-toggle></button></div>
+              <div class="pardava-switch"><span>حالت فشرده جدول</span><button class="pardava-toggle" type="button" data-pardava-toggle></button></div>
+              <div class="pardava-switch"><span>قفل خروجی مالی</span><button class="pardava-toggle" type="button" data-pardava-toggle></button></div>
+              <figure class="pardava-media" style="margin-top:16px;height:140px">
+                <img src="assets/images/steel.jpg" alt="بافت استیل برس‌خورده — تصویر تزئینی" width="800" height="533">
+                <figcaption>استیل آنتیک پنل — تصویر تستی</figcaption>
+              </figure>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+  <div class="pardava-scrim" id="pardava-scrim"></div>
+  <div class="pardava-toast" id="pardava-toast" role="status"></div>
+  <script src="assets/scripts.js"></script>
+</body>
+</html>

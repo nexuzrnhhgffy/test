@@ -7,6 +7,7 @@ GitHub cannot show a diff for zip and image files. Use the download links below 
 - Architecture (618 KB): https://github.com/nexuzrnhhgffy/test/raw/cursor/pardava-persian-template-a269/pardava.zip
 - Dental clinic (477 KB): https://github.com/nexuzrnhhgffy/test/raw/cursor/pardava-persian-template-a269/pardava-dental.zip
 - Photography gallery (786 KB): https://github.com/nexuzrnhhgffy/test/raw/cursor/pardava-persian-template-a269/pardava-gallery.zip
+- Analytics dashboard (287 KB): https://github.com/nexuzrnhhgffy/test/raw/cursor/pardava-persian-template-a269/pardava-dashboard.zip
 
 All zips are under 2 MB.
 
@@ -31,3 +32,11 @@ All zips are under 2 MB.
 - Preview: `pardava-gallery-preview.jpg`
 - Source: `pardava-gallery/index.html`, `pardava-gallery/assets/`
 - Dark professional gallery; city and nature photos only (no people); all classes and variables use the `pardava` prefix
+
+## Analytics — پرداوا | پنل تحلیل داده
+
+- Slug: `pardava-dashboard`
+- Zip: `pardava-dashboard.zip`
+- Preview: `pardava-dashboard-preview.jpg`
+- Source: `pardava-dashboard/index.html`, `pardava-dashboard/assets/`
+- Navy / antique-steel RTL admin panel; charts, KPIs, tables, alerts, settings; all classes and variables use the `pardava` prefix
