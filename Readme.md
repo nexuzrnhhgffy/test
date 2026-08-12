@@ -6,7 +6,7 @@ GitHub cannot show a diff for zip and image files. Use the download links below 
 
 - Architecture (618 KB): https://github.com/nexuzrnhhgffy/test/raw/cursor/pardava-persian-template-a269/pardava.zip
 - Dental clinic (477 KB): https://github.com/nexuzrnhhgffy/test/raw/cursor/pardava-persian-template-a269/pardava-dental.zip
-- Photography gallery (675 KB): https://github.com/nexuzrnhhgffy/test/raw/cursor/pardava-persian-template-a269/pardava-gallery.zip
+- Photography gallery (546 KB): https://github.com/nexuzrnhhgffy/test/raw/cursor/pardava-persian-template-a269/pardava-gallery.zip
 
 All zips are under 2 MB.
 
@@ -30,4 +30,4 @@ All zips are under 2 MB.
 - Zip: `pardava-gallery.zip`
 - Preview: `pardava-gallery-preview.jpg`
 - Source: `pardava-gallery/index.html`, `pardava-gallery/assets/`
-- Dark professional gallery; modest/hijab portraits; all classes and variables use the `pardava` prefix
+- Dark professional gallery; cinematic camera hero (no people); portraits in covered clothing without requiring hijab; all classes and variables use the `pardava` prefix
