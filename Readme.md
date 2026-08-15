@@ -8,6 +8,7 @@ GitHub cannot show a diff for zip and image files. Use the download links below 
 - Dental clinic (477 KB): https://github.com/nexuzrnhhgffy/test/raw/cursor/pardava-persian-template-a269/pardava-dental.zip
 - Photography gallery (786 KB): https://github.com/nexuzrnhhgffy/test/raw/cursor/pardava-persian-template-a269/pardava-gallery.zip
 - Analytics dashboard (287 KB): https://github.com/nexuzrnhhgffy/test/raw/cursor/pardava-persian-template-a269/pardava-dashboard.zip
+- Stock market (82 KB): https://github.com/nexuzrnhhgffy/test/raw/cursor/pardava-persian-template-a269/pardava-bourse.zip
 
 All zips are under 2 MB.
 
@@ -40,3 +41,11 @@ All zips are under 2 MB.
 - Preview: `pardava-dashboard-preview.jpg`
 - Source: `pardava-dashboard/index.html`, `pardava-dashboard/assets/`
 - Navy / antique-steel RTL admin panel; charts, KPIs, tables, alerts, settings; all classes and variables use the `pardava` prefix
+
+## Stock market — پرداوا | بازار بورس
+
+- Slug: `pardava-bourse`
+- Zip: `pardava-bourse.zip`
+- Preview: `pardava-bourse-preview.jpg`
+- Source: `pardava-bourse/index.html`, `pardava-bourse/assets/`
+- Clean ad-free Persian bourse site; live simulated prices, watchlist, news, tools; all classes and variables use the `pardava` prefix
