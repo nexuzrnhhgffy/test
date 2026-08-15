@@ -9,6 +9,7 @@ GitHub cannot show a diff for zip and image files. Use the download links below 
 - Photography gallery (786 KB): https://github.com/nexuzrnhhgffy/test/raw/cursor/pardava-persian-template-a269/pardava-gallery.zip
 - Analytics dashboard (287 KB): https://github.com/nexuzrnhhgffy/test/raw/cursor/pardava-persian-template-a269/pardava-dashboard.zip
 - Stock market (82 KB): https://github.com/nexuzrnhhgffy/test/raw/cursor/pardava-persian-template-a269/pardava-bourse.zip
+- Newsroom (765 KB): https://github.com/nexuzrnhhgffy/test/raw/cursor/pardava-persian-template-a269/pardava-news.zip
 
 All zips are under 2 MB.
 
@@ -49,3 +50,11 @@ All zips are under 2 MB.
 - Preview: `pardava-bourse-preview.jpg`
 - Source: `pardava-bourse/index.html`, `pardava-bourse/assets/`
 - Clean ad-free Persian bourse site; live simulated prices, watchlist, news, tools; all classes and variables use the `pardava` prefix
+
+## Newsroom — پرداوا | رسانه خبری
+
+- Slug: `pardava-news`
+- Zip: `pardava-news.zip`
+- Preview: `pardava-news-preview.jpg`
+- Source: `pardava-news/index.html`, `pardava-news/article.html`, `pardava-news/assets/`
+- Editorial premium newsroom; homepage + article; search overlay; dark mode; no ads; all classes and variables use the `pardava` prefix
