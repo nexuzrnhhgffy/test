@@ -10,6 +10,7 @@ GitHub cannot show a diff for zip and image files. Use the download links below 
 - Analytics dashboard (287 KB): https://github.com/nexuzrnhhgffy/test/raw/cursor/pardava-persian-template-a269/pardava-dashboard.zip
 - Stock market (82 KB): https://github.com/nexuzrnhhgffy/test/raw/cursor/pardava-persian-template-a269/pardava-bourse.zip
 - Newsroom (765 KB): https://github.com/nexuzrnhhgffy/test/raw/cursor/pardava-persian-template-a269/pardava-news.zip
+- Realtor (923 KB): https://github.com/nexuzrnhhgffy/test/raw/cursor/pardava-persian-template-a269/pardava-realtor.zip
 
 All zips are under 2 MB.
 
@@ -58,3 +59,11 @@ All zips are under 2 MB.
 - Preview: `pardava-news-preview.jpg`
 - Source: `pardava-news/index.html`, `pardava-news/article.html`, `pardava-news/assets/`
 - Editorial premium newsroom; homepage + article; search overlay; dark mode; no ads; all classes and variables use the `pardava` prefix
+
+## Realtor — سعید احمدی | مشاور تخصصی املاک نیاوران
+
+- Slug: `pardava-realtor`
+- Zip: `pardava-realtor.zip`
+- Preview: `pardava-realtor-preview.jpg`
+- Source: `pardava-realtor/index.html`, `pardava-realtor/property.html`, `pardava-realtor/area.html`, `pardava-realtor/assets/`
+- Luxury personal-brand real estate site (not a classifieds platform); homepage + property detail + area landing; search, listings, leads, market stats; all classes and variables use the `pardava` prefix
