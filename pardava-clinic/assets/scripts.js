@@ -282,7 +282,7 @@
     if (count) count.textContent = pardavaFa(rows.length) + " پرونده";
     if (list) {
       list.innerHTML = rows.slice(start, start + per).map(function (p) {
-        return '<div class="pardava-patient" data-pardava-pid="' + p.id + '"><span class="pardava-mono">' + p.name.charAt(0) + "</span><div><b>" + p.name + "</b><p class='pardava-note'>" + pardavaFa(p.age) + " سال · " + p.code + "</p></div></div>";
+        return '<div class="pardava-patient' + (p.id === selectedPatient ? " is-on" : "") + '" data-pardava-pid="' + p.id + '"><span class="pardava-mono">' + p.name.charAt(0) + "</span><div><b>" + p.name + "</b><p class='pardava-note'>" + pardavaFa(p.age) + " سال · " + p.code + "</p></div></div>";
       }).join("");
     }
     var pager = document.getElementById("pardava-patient-pager");
@@ -300,13 +300,20 @@
     var box = document.getElementById("pardava-patient-detail");
     if (!box) return;
     box.innerHTML =
-      "<div class='pardava-card__head'><h3>" + p.name + "</h3><span>کد " + p.code + "</span></div>" +
-      "<p>تماس: " + p.phone + " · سن " + pardavaFa(p.age) + "</p>" +
-      "<p>آلرژی: " + p.allergy + "</p>" +
-      "<p>سابقه: " + p.hist + "</p>" +
-      "<p>آخرین ویزیت: " + p.vis + "</p>" +
-      "<h3 style='margin:12px 0 8px'>اسناد پزشکی</h3>" +
-      "<div class='pardava-files'><div class='pardava-file'>آزمایش · " + pardavaFa(p.files) + " فایل</div><div class='pardava-file'>تصویر رادیولوژی</div><div class='pardava-file'>سایر اسناد</div></div>";
+      "<div class='pardava-card__head'><h3>" + p.name + "</h3><span>کد ملی " + p.code + "</span></div>" +
+      "<div class='pardava-facts'>" +
+      "<div><span>تماس</span><b>" + p.phone + "</b></div>" +
+      "<div><span>سن</span><b>" + pardavaFa(p.age) + " سال</b></div>" +
+      "<div><span>آخرین ویزیت</span><b>" + p.vis + "</b></div>" +
+      "<div><span>اسناد</span><b>" + pardavaFa(p.files) + " فایل نمایشی</b></div>" +
+      "</div>" +
+      "<p class='pardava-note'>آلرژی و سابقه</p>" +
+      "<div class='pardava-chips'><span class='pardava-badge pardava-badge--off'>آلرژی: " + p.allergy + "</span><span class='pardava-badge pardava-badge--info'>سابقه: " + p.hist + "</span></div>" +
+      "<h3>اسناد پزشکی</h3>" +
+      "<div class='pardava-files'>" +
+      "<figure class='pardava-media'><img src='assets/images/radiology-hand-xray.jpg' alt='نمونه رادیولوژی دست بیمار — تصویر نمایشی' width='800' height='1000'><figcaption>رادیولوژی دست · پیوست پرونده</figcaption></figure>" +
+      "<div class='pardava-file'>آزمایش خون · " + pardavaFa(p.files) + " فایل<br><small>آپلود واقعی نیست</small></div>" +
+      "</div>";
   }
   var pq = document.getElementById("pardava-patient-q");
   if (pq) pq.addEventListener("input", function () { patientQ = pq.value.trim(); patientPage = 1; pardavaPatients(); });
@@ -314,7 +321,7 @@
     var pg = e.target.closest("[data-pardava-pp]");
     if (pg) { patientPage = Number(pg.getAttribute("data-pardava-pp")); pardavaPatients(); }
     var row = e.target.closest("[data-pardava-pid]");
-    if (row) pardavaPatientDetail(Number(row.getAttribute("data-pardava-pid")));
+    if (row) { selectedPatient = Number(row.getAttribute("data-pardava-pid")); pardavaPatients(); }
   });
   pardavaPatients();
 
@@ -339,24 +346,38 @@
     if (!box) return;
     box.innerHTML = PARDAVA_DRUGS.filter(function (d) { return !q || d.n.indexOf(q) >= 0 || d.g.indexOf(q) >= 0; }).map(function (d) {
       return '<div class="pardava-drug" data-pardava-drug="' + d.n + '"><div><b>' + d.n + "</b><p class='pardava-note'>" + d.g + "</p></div><span class='pardava-badge pardava-badge--info'>افزودن</span></div>";
-    }).join("");
+    }).join("") || "<p class='pardava-note'>دارویی با این جستجو نیست.</p>";
   }
   function pardavaRxList() {
-    var ul = document.getElementById("pardava-rx-items");
-    if (ul) ul.innerHTML = PARDAVA_RX.map(function (x) { return "<li>" + x + "</li>"; }).join("") || "<li class='pardava-note'>دارویی انتخاب نشده.</li>";
+    var box = document.getElementById("pardava-rx-items");
+    if (box) {
+      box.innerHTML = PARDAVA_RX.length ? PARDAVA_RX.map(function (x, i) {
+        return '<div class="pardava-rx-item"><div><b>' + x.n + "</b><p class='pardava-note'>" + x.dose + " · " + x.days + "</p></div><button type='button' data-pardava-rx-del='" + i + "'>حذف</button></div>";
+      }).join("") : "<p class='pardava-note'>دارویی به نسخه اضافه نشده. از فهرست سمت راست انتخاب کنید.</p>";
+    }
     var hist = document.getElementById("pardava-rx-hist");
-    if (hist) hist.innerHTML = "<thead><tr><th>تاریخ</th><th>دارو</th></tr></thead><tbody><tr><td>۱۸ مرداد</td><td>لوسارتان ۵۰</td></tr><tr><td>۲ مرداد</td><td>متفورمین ۵۰۰</td></tr></tbody>";
+    if (hist) {
+      hist.innerHTML = "<tr><td>۱۸ مرداد</td><td>لوسارتان ۵۰</td><td><span class='pardava-badge pardava-badge--ok'>تحویل شده</span></td></tr>" +
+        "<tr><td>۲ مرداد</td><td>متفورمین ۵۰۰</td><td><span class='pardava-badge pardava-badge--wait'>تکرار</span></td></tr>";
+    }
   }
   pardavaDrugs("");
   pardavaRxList();
   var dq = document.getElementById("pardava-drug-q");
   if (dq) dq.addEventListener("input", function () { pardavaDrugs(dq.value.trim()); });
   document.addEventListener("click", function (e) {
+    var del = e.target.closest("[data-pardava-rx-del]");
+    if (del) {
+      PARDAVA_RX.splice(Number(del.getAttribute("data-pardava-rx-del")), 1);
+      pardavaRxList();
+      pardavaToast("دارو از نسخه نمایشی حذف شد.");
+      return;
+    }
     var d = e.target.closest("[data-pardava-drug]");
     if (!d) return;
     var dose = document.getElementById("pardava-rx-dose").value;
     var days = document.getElementById("pardava-rx-days").value;
-    PARDAVA_RX.push(d.getAttribute("data-pardava-drug") + " — " + dose + " / " + days);
+    PARDAVA_RX.push({ n: d.getAttribute("data-pardava-drug"), dose: dose, days: days });
     pardavaRxList();
     pardavaToast("دارو به نسخه نمایشی اضافه شد.");
   });
@@ -432,8 +453,13 @@
 
   var msgList = document.getElementById("pardava-msg-list");
   if (msgList) {
-    msgList.innerHTML = ["یادآوری ۱۰:۳۰ کیان رستمی", "اعلان منشی: تأخیر بیمه", "پیام آزمایش برای آرمان نوری"].map(function (t) {
-      return "<p class='pardava-patient'><span class='pardava-mono'>!</span><span>" + t + "</span></p>";
+    msgList.innerHTML = [
+      { k: "پیامک", t: "۱۰:۳۰", who: "کیان رستمی", txt: "یادآوری نوبت امروز در مطب پرداوا." },
+      { k: "منشی", t: "۰۹:۴۰", who: "کیان رستمی", txt: "اعلان داخلی: تأخیر سند بیمه تامین." },
+      { k: "پیامک", t: "دیروز", who: "آرمان نوری", txt: "نتیجه آزمایش تیروئید آماده است — نمایشی." }
+    ].map(function (m) {
+      var cls = m.k === "منشی" ? "pardava-badge--wait" : "pardava-badge--info";
+      return "<article class='pardava-msg'><header><span class='pardava-badge " + cls + "'>" + m.k + "</span><span class='pardava-note'>" + m.t + "</span></header><p>" + m.txt + "</p><p class='pardava-note'>گیرنده: " + m.who + "</p></article>";
     }).join("");
   }
   var msgForm = document.getElementById("pardava-msg-form");

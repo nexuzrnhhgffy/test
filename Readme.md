@@ -11,7 +11,7 @@ GitHub cannot show a diff for zip and image files. Use the download links below 
 - Stock market (82 KB): https://github.com/nexuzrnhhgffy/test/raw/cursor/pardava-persian-template-a269/pardava-bourse.zip
 - Newsroom (765 KB): https://github.com/nexuzrnhhgffy/test/raw/cursor/pardava-persian-template-a269/pardava-news.zip
 - Realtor (923 KB): https://github.com/nexuzrnhhgffy/test/raw/cursor/pardava-persian-template-a269/pardava-realtor.zip
-- Clinic panel (16 KB): https://github.com/nexuzrnhhgffy/test/raw/cursor/pardava-persian-template-a269/pardava-clinic.zip
+- Clinic panel (133 KB): https://github.com/nexuzrnhhgffy/test/raw/cursor/pardava-persian-template-a269/pardava-clinic.zip
 
 All zips are under 2 MB.
 

@@ -7,7 +7,7 @@
   <meta name="description" content="متن تستی: پنل تک‌صفحه مدیریت مطب پرداوا برای نوبت، پرونده، نسخه و صندوق. داده واقعی نیست.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
@@ -181,11 +181,11 @@
               <h1 class="pardava-title">بیماران</h1>
               <p class="pardava-note">جستجو و پرونده‌ها ساختگی‌اند. تصویر چهره بیمار در این قالب نیست.</p>
             </div>
-            <input id="pardava-patient-q" placeholder="جستجوی نام یا کد ملی نمایشی" style="max-width:280px;height:40px;padding:0 12px;border:1px solid var(--pardava-line);border-radius:12px;background:var(--pardava-surface)">
+            <input class="pardava-searchbox" id="pardava-patient-q" placeholder="جستجوی نام یا کد ملی نمایشی">
           </div>
           <div class="pardava-grid" style="margin-top:14px">
             <article class="pardava-card pardava-span-5">
-              <div class="pardava-card__head"><h3>فهرست</h3><span id="pardava-patient-count"></span></div>
+              <div class="pardava-card__head"><h3>فهرست بیماران</h3><span id="pardava-patient-count"></span></div>
               <div id="pardava-patient-list"></div>
               <div class="pardava-pager" id="pardava-patient-pager"></div>
             </article>
@@ -239,7 +239,11 @@
           </div>
           <div class="pardava-grid" style="margin-top:14px">
             <article class="pardava-card pardava-span-5">
-              <div class="pardava-field"><label>جستجوی دارو</label><input id="pardava-drug-q" placeholder="نام ژنریک یا برند تستی"></div>
+              <figure class="pardava-media">
+                <img src="assets/images/pharmacy-medicines.jpg" alt="بسته داروهای نمایشی برای نسخه‌نویسی" width="800" height="559">
+                <figcaption>بانک داروی آزمایشی مطب — تصویر تزئینی</figcaption>
+              </figure>
+              <div class="pardava-field" style="margin-top:12px"><label>جستجوی دارو</label><input id="pardava-drug-q" placeholder="نام ژنریک یا برند تستی"></div>
               <div id="pardava-drug-list" style="margin-top:10px"></div>
             </article>
             <article class="pardava-card pardava-span-7">
@@ -248,10 +252,13 @@
                 <div class="pardava-field"><label>دوز</label><input id="pardava-rx-dose" value="۵۰۰ میلی‌گرم"></div>
                 <div class="pardava-field"><label>مدت مصرف</label><input id="pardava-rx-days" value="۵ روز"></div>
               </div>
-              <ul id="pardava-rx-items" style="margin:12px 0"></ul>
+              <div class="pardava-rx-list" id="pardava-rx-items"></div>
               <h3>تاریخچه نسخه‌های قبلی</h3>
               <div class="pardava-tablewrap" style="margin-top:8px">
-                <table class="pardava-table" id="pardava-rx-hist"></table>
+                <table class="pardava-table">
+                  <thead><tr><th>تاریخ</th><th>دارو</th><th>وضعیت</th></tr></thead>
+                  <tbody id="pardava-rx-hist"></tbody>
+                </table>
               </div>
             </article>
           </div>
@@ -330,16 +337,26 @@
           <div class="pardava-grid" style="margin-top:14px">
             <article class="pardava-card pardava-span-7">
               <form class="pardava-form" id="pardava-msg-form">
-                <div class="pardava-field"><label>گیرنده</label><select id="pardava-msg-to"></select></div>
-                <div class="pardava-field"><label>نوع</label>
-                  <select><option>یادآوری نوبت</option><option>پیام به بیمار</option><option>اعلان داخلی منشی</option></select>
+                <div class="pardava-form-2">
+                  <div class="pardava-field"><label>گیرنده</label><select id="pardava-msg-to"></select></div>
+                  <div class="pardava-field"><label>نوع پیام</label>
+                    <select id="pardava-msg-kind">
+                      <option>یادآوری نوبت</option>
+                      <option>پیام به بیمار</option>
+                      <option>اعلان داخلی منشی</option>
+                    </select>
+                  </div>
                 </div>
                 <div class="pardava-field"><label>متن</label><textarea>یادآوری نوبت فردا ساعت ۱۰:۳۰ در مطب پرداوا.</textarea></div>
                 <button class="pardava-btn pardava-btn--primary" type="submit">ارسال پیامک نمایشی</button>
               </form>
             </article>
             <article class="pardava-card pardava-span-5">
-              <h3>صف یادآوری</h3>
+              <figure class="pardava-media">
+                <img src="assets/images/clinic-reception.jpg" alt="پذیرش مطب برای یادآوری حضوری و پیامکی" width="800" height="544">
+                <figcaption>کانال یادآوری از پذیرش مطب — تصویر تزئینی</figcaption>
+              </figure>
+              <h3 style="margin-top:14px">صف یادآوری</h3>
               <div id="pardava-msg-list" style="margin-top:10px"></div>
             </article>
           </div>
