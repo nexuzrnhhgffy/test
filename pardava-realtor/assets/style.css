@@ -1,0 +1,333 @@
+@layer pardava-reset, pardava-tokens, pardava-base, pardava-layout, pardava-components, pardava-pages, pardava-responsive;
+
+@layer pardava-tokens {
+  :root {
+    --pardava-paper: #f7f4ef;
+    --pardava-surface: #fffcf8;
+    --pardava-ink: #161513;
+    --pardava-ink-2: #3a3834;
+    --pardava-muted: #6f6a63;
+    --pardava-line: #e4ddd2;
+    --pardava-bronze: #9a7b4f;
+    --pardava-bronze-2: #c4a574;
+    --pardava-ok: #2f6b4f;
+    --pardava-font: "Vazirmatn", sans-serif;
+    --pardava-max: 1180px;
+    --pardava-gutter: clamp(16px, 3vw, 36px);
+    --pardava-radius: 10px;
+    --pardava-ease: cubic-bezier(.22, 1, .36, 1);
+    --pardava-space-2: 8px;
+    --pardava-space-3: 12px;
+    --pardava-space-4: 16px;
+    --pardava-space-5: 24px;
+    --pardava-space-6: 32px;
+    --pardava-space-7: 48px;
+    --pardava-space-8: 72px;
+  }
+}
+
+@layer pardava-reset {
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; text-decoration: none; }
+  button, input, select, textarea { font: inherit; color: inherit; }
+  button { cursor: pointer; border: 0; background: none; }
+  ul { list-style: none; }
+}
+
+@layer pardava-base {
+  body {
+    font-family: var(--pardava-font);
+    background: var(--pardava-paper);
+    color: var(--pardava-ink);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  :focus-visible { outline: 2px solid var(--pardava-bronze); outline-offset: 2px; }
+}
+
+@layer pardava-layout {
+  .pardava-wrap {
+    width: min(100% - (var(--pardava-gutter) * 2), var(--pardava-max));
+    margin-inline: auto;
+  }
+  .pardava-section { padding-block: var(--pardava-space-8); }
+  .pardava-grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: var(--pardava-space-5); }
+  .pardava-span-12 { grid-column: span 12; }
+  .pardava-span-8 { grid-column: span 8; }
+  .pardava-span-6 { grid-column: span 6; }
+  .pardava-span-4 { grid-column: span 4; }
+  .pardava-span-3 { grid-column: span 3; }
+}
+
+@layer pardava-components {
+  .pardava-skip {
+    position: absolute; right: -999px; top: 8px;
+    background: var(--pardava-ink); color: #fff; padding: 8px 12px; z-index: 80;
+  }
+  .pardava-skip:focus { right: 12px; }
+  .pardava-header {
+    position: sticky; top: 0; z-index: 40;
+    background: color-mix(in srgb, var(--pardava-paper) 92%, transparent);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--pardava-line);
+  }
+  .pardava-header__bar {
+    display: flex; align-items: center; gap: 18px; min-height: 72px;
+  }
+  .pardava-logo { display: flex; align-items: baseline; gap: 8px; }
+  .pardava-logo b { font-size: 1.25rem; }
+  .pardava-logo small { color: var(--pardava-bronze); font-size: .75rem; font-weight: 700; letter-spacing: .08em; }
+  .pardava-nav { display: flex; gap: 14px; font-size: .9rem; font-weight: 600; }
+  .pardava-nav a { color: var(--pardava-ink-2); }
+  .pardava-nav a:hover, .pardava-nav a.is-on { color: var(--pardava-ink); }
+  .pardava-header__tools { margin-right: auto; display: flex; gap: 8px; align-items: center; }
+  .pardava-burger { display: none; width: 40px; height: 40px; border: 1px solid var(--pardava-line); }
+  .pardava-btn {
+    height: 42px; padding: 0 16px;
+    background: var(--pardava-ink); color: #fff;
+    font-weight: 700; font-size: .88rem;
+    border-radius: 8px;
+  }
+  .pardava-btn--ghost {
+    background: transparent; color: var(--pardava-ink);
+    border: 1px solid var(--pardava-line);
+  }
+  .pardava-btn--bronze { background: var(--pardava-bronze); color: #fff; }
+  .pardava-btn--block { width: 100%; }
+
+  .pardava-hero {
+    position: relative; min-height: 88vh;
+    display: grid; align-items: end;
+    color: #fff;
+  }
+  .pardava-hero__bg { position: absolute; inset: 0; }
+  .pardava-hero__bg img { width: 100%; height: 100%; object-fit: cover; }
+  .pardava-hero__bg::after {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(180deg, color-mix(in srgb, #0b0b0b 18%, transparent) 10%, color-mix(in srgb, #0b0b0b 72%, transparent) 100%);
+  }
+  .pardava-hero__inner { position: relative; z-index: 1; padding: 48px 0 64px; }
+  .pardava-agent-chip {
+    display: inline-flex; align-items: center; gap: 12px;
+    background: color-mix(in srgb, #fff 12%, transparent);
+    border: 1px solid color-mix(in srgb, #fff 22%, transparent);
+    padding: 8px 14px 8px 8px; border-radius: 999px;
+    margin-bottom: 22px;
+  }
+  .pardava-agent-chip img { width: 48px; height: 48px; object-fit: cover; border-radius: 50%; }
+  .pardava-hero h1 { font-size: clamp(1.8rem, 4vw, 3rem); max-width: 16ch; line-height: 1.25; margin-bottom: 12px; }
+  .pardava-hero__text { max-width: 46ch; color: #ece7de; margin-bottom: 22px; }
+  .pardava-hero__cta { display: flex; flex-wrap: wrap; gap: 10px; }
+
+  .pardava-search {
+    margin-top: -36px; position: relative; z-index: 5;
+  }
+  .pardava-search__box {
+    background: var(--pardava-surface);
+    border: 1px solid var(--pardava-line);
+    border-radius: var(--pardava-radius);
+    padding: 18px;
+    box-shadow: 0 18px 40px color-mix(in srgb, #000 8%, transparent);
+  }
+  .pardava-search__grid {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 10px;
+  }
+  .pardava-field label { display: block; font-size: .78rem; color: var(--pardava-muted); margin-bottom: 4px; }
+  .pardava-field input, .pardava-field select, .pardava-field textarea {
+    width: 100%; height: 44px; padding: 0 10px;
+    border: 1px solid var(--pardava-line); background: #fff; border-radius: 8px;
+  }
+  .pardava-field textarea { height: 96px; padding: 10px; }
+
+  .pardava-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .pardava-stats b { display: block; font-size: clamp(1.6rem, 3vw, 2.4rem); letter-spacing: -.03em; }
+  .pardava-stats p { color: var(--pardava-muted); }
+
+  .pardava-kicker { color: var(--pardava-bronze); font-size: .78rem; font-weight: 800; letter-spacing: .12em; }
+  .pardava-title { font-size: clamp(1.4rem, 2.4vw, 2rem); margin: 6px 0 10px; }
+  .pardava-sechead { display: flex; justify-content: space-between; align-items: end; gap: 12px; margin-bottom: 24px; }
+  .pardava-sechead select {
+    height: 40px; padding: 0 10px; border: 1px solid var(--pardava-line);
+    background: #fff; border-radius: 8px;
+  }
+
+  .pardava-pcard {
+    background: var(--pardava-surface);
+    border: 1px solid var(--pardava-line);
+    border-radius: var(--pardava-radius);
+    overflow: hidden;
+    display: flex; flex-direction: column;
+  }
+  .pardava-pcard__media { position: relative; aspect-ratio: 16 / 11; overflow: hidden; }
+  .pardava-pcard__media img { width: 100%; height: 100%; object-fit: cover; transition: transform .45s var(--pardava-ease); }
+  .pardava-pcard:hover .pardava-pcard__media img { transform: scale(1.04); }
+  .pardava-badge {
+    position: absolute; top: 12px; right: 12px;
+    background: var(--pardava-ink); color: #fff;
+    font-size: .72rem; font-weight: 800; padding: 4px 8px; border-radius: 4px;
+  }
+  .pardava-badge--feat { top: 42px; right: 12px; left: auto; background: var(--pardava-bronze); }
+  .pardava-fav {
+    position: absolute; top: 12px; left: 12px;
+    width: 36px; height: 36px; border-radius: 50%;
+    background: color-mix(in srgb, #fff 88%, transparent);
+    color: var(--pardava-ink);
+  }
+  .pardava-fav.is-on { color: #b42318; }
+  .pardava-cmp {
+    position: absolute; bottom: 12px; left: 12px;
+    height: 28px; padding: 0 10px; border-radius: 6px;
+    background: color-mix(in srgb, #fff 90%, transparent);
+    font-size: .72rem; font-weight: 700;
+  }
+  .pardava-cmp.is-on { background: var(--pardava-ink); color: #fff; }
+  .pardava-pcard__body { padding: 14px 14px 16px; }
+  .pardava-pcard h3 { font-size: 1.02rem; margin-bottom: 6px; }
+  .pardava-spec { color: var(--pardava-muted); font-size: .82rem; margin-bottom: 8px; }
+  .pardava-price { font-weight: 800; font-size: 1.05rem; margin-bottom: 4px; }
+  .pardava-more { color: var(--pardava-bronze); font-weight: 700; font-size: .86rem; }
+
+  .pardava-hcard {
+    display: grid; grid-template-columns: 200px 1fr;
+    background: var(--pardava-surface); border: 1px solid var(--pardava-line);
+    border-radius: var(--pardava-radius); overflow: hidden;
+  }
+  .pardava-hcard img { width: 100%; height: 100%; object-fit: cover; min-height: 140px; }
+
+  .pardava-why { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .pardava-why article {
+    background: var(--pardava-surface); border: 1px solid var(--pardava-line);
+    padding: 20px; border-radius: var(--pardava-radius);
+  }
+  .pardava-why h3 { font-size: 1.02rem; margin-bottom: 8px; }
+
+  .pardava-about { display: grid; grid-template-columns: .9fr 1.1fr; gap: 32px; align-items: center; }
+  .pardava-about img { width: 100%; height: 520px; object-fit: cover; object-position: center top; border-radius: var(--pardava-radius); }
+
+  .pardava-areas { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+  .pardava-area {
+    position: relative; min-height: 220px; overflow: hidden; border-radius: var(--pardava-radius); color: #fff;
+  }
+  .pardava-area img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .pardava-area::after { content: ""; position: absolute; inset: 0; background: linear-gradient(transparent, #111); }
+  .pardava-area div { position: relative; z-index: 1; padding: 16px; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; }
+
+  .pardava-cats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .pardava-cat { position: relative; min-height: 160px; overflow: hidden; border-radius: var(--pardava-radius); color: #fff; }
+  .pardava-cat img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .pardava-cat::after { content: ""; position: absolute; inset: 0; background: color-mix(in srgb, #000 35%, transparent); }
+  .pardava-cat span { position: relative; z-index: 1; display: grid; place-items: center; height: 100%; font-weight: 800; }
+
+  .pardava-quote {
+    background: var(--pardava-surface); border: 1px solid var(--pardava-line);
+    padding: 18px; border-radius: var(--pardava-radius);
+  }
+  .pardava-quote header { display: flex; gap: 10px; align-items: center; margin-bottom: 8px; }
+  .pardava-mono {
+    width: 40px; height: 40px; border-radius: 50%;
+    display: grid; place-items: center;
+    background: var(--pardava-ink); color: #fff; font-weight: 800;
+  }
+
+  .pardava-form {
+    display: grid; gap: 10px;
+    background: var(--pardava-surface); border: 1px solid var(--pardava-line);
+    padding: 20px; border-radius: var(--pardava-radius);
+  }
+  .pardava-cta-band {
+    background: var(--pardava-ink); color: #fff; padding-block: var(--pardava-space-8);
+  }
+
+  .pardava-footer {
+    border-top: 1px solid var(--pardava-line);
+    padding: 40px 0 24px; font-size: .88rem; color: var(--pardava-ink-2);
+  }
+  .pardava-footer__grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 24px; }
+  .pardava-footer a { display: block; padding: 3px 0; }
+  .pardava-copy { margin-top: 24px; padding-top: 16px; border-top: 1px solid var(--pardava-line); color: var(--pardava-muted); display: flex; justify-content: space-between; gap: 12px; }
+
+  .pardava-float {
+    display: none;
+    position: fixed; bottom: 0; inset-inline: 0;
+    background: var(--pardava-surface);
+    border-top: 1px solid var(--pardava-line);
+    z-index: 50; padding: 8px 12px;
+    grid-template-columns: 1fr 1fr 1fr; gap: 8px;
+  }
+  .pardava-toast {
+    position: fixed; bottom: 72px; left: 16px;
+    background: var(--pardava-ink); color: #fff; padding: 10px 14px;
+    border-radius: 8px; opacity: 0; pointer-events: none; transition: .2s; z-index: 60;
+  }
+  .pardava-toast.is-on { opacity: 1; }
+  .pardava-lightbox {
+    display: none; position: fixed; inset: 0; background: color-mix(in srgb, #000 82%, transparent);
+    z-index: 70; place-items: center; padding: 20px;
+  }
+  .pardava-lightbox.is-on { display: grid; }
+  .pardava-lightbox img { max-height: 86vh; max-width: 100%; }
+  .pardava-chart { width: 100%; height: 180px; }
+  .pardava-amenities { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .pardava-amenities li { border: 1px solid var(--pardava-line); padding: 10px; border-radius: 8px; font-size: .88rem; }
+  .pardava-near li { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--pardava-line); }
+  .pardava-thumbs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 8px; }
+  .pardava-thumbs button { border: 1px solid transparent; }
+  .pardava-thumbs button.is-on { border-color: var(--pardava-bronze); }
+  .pardava-thumbs img { height: 72px; width: 100%; object-fit: cover; }
+  .pardava-pager { display: flex; gap: 6px; justify-content: flex-end; margin-top: 16px; }
+  .pardava-pager button { min-width: 36px; height: 36px; border: 1px solid var(--pardava-line); border-radius: 6px; }
+  .pardava-pager button.is-on { background: var(--pardava-ink); color: #fff; }
+}
+
+@layer pardava-pages {
+  .pardava-detail { padding-block: 32px; }
+  .pardava-crumb { font-size: .82rem; color: var(--pardava-muted); margin-bottom: 16px; }
+  .pardava-gallery-main { position: relative; aspect-ratio: 16 / 10; overflow: hidden; border-radius: var(--pardava-radius); cursor: zoom-in; }
+  .pardava-gallery-main img { width: 100%; height: 100%; object-fit: cover; }
+  .pardava-gallery-tools {
+    position: absolute; bottom: 12px; left: 12px; display: flex; gap: 6px;
+  }
+  .pardava-gallery-tools span {
+    background: color-mix(in srgb, #000 62%, transparent); color: #fff;
+    font-size: .75rem; font-weight: 700; padding: 4px 8px; border-radius: 4px;
+  }
+  .pardava-sidebox {
+    background: var(--pardava-surface); border: 1px solid var(--pardava-line);
+    border-radius: var(--pardava-radius); padding: 18px;
+    position: sticky; top: 88px;
+  }
+  .pardava-facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 14px 0; }
+  .pardava-facts div { background: var(--pardava-paper); padding: 10px; border-radius: 8px; }
+  .pardava-facts b { display: block; }
+}
+
+@layer pardava-responsive {
+  @media (max-width: 1100px) {
+    .pardava-nav { display: none; }
+    .pardava-nav.is-open {
+      display: flex; flex-direction: column;
+      position: absolute; inset: 100% 0 auto; background: var(--pardava-surface);
+      border-bottom: 1px solid var(--pardava-line); padding: 12px 20px;
+    }
+    .pardava-burger { display: grid; place-items: center; }
+    .pardava-search__grid { grid-template-columns: repeat(2, 1fr); }
+    .pardava-span-8, .pardava-span-6 { grid-column: span 12; }
+    .pardava-span-4, .pardava-span-3 { grid-column: span 6; }
+    .pardava-why, .pardava-areas, .pardava-cats { grid-template-columns: repeat(2, 1fr); }
+    .pardava-about { grid-template-columns: 1fr; }
+    .pardava-stats { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 720px) {
+    .pardava-span-4, .pardava-span-3 { grid-column: span 12; }
+    .pardava-search__grid, .pardava-why, .pardava-areas, .pardava-cats, .pardava-stats, .pardava-footer__grid { grid-template-columns: 1fr; }
+    .pardava-hcard { grid-template-columns: 1fr; }
+    .pardava-float { display: grid; }
+    .pardava-hero { min-height: 78vh; }
+    .pardava-amenities { grid-template-columns: 1fr 1fr; }
+    body { padding-bottom: 64px; }
+  }
+}

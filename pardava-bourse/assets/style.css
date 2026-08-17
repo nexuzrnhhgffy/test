@@ -1,0 +1,396 @@
+@layer pardava-reset, pardava-tokens, pardava-base, pardava-layout, pardava-components, pardava-responsive;
+
+@layer pardava-tokens {
+  :root {
+    --pardava-paper: #f4f1ea;
+    --pardava-card: #fffcf7;
+    --pardava-ink: #14181f;
+    --pardava-muted: #5d6570;
+    --pardava-line: #dcd6cb;
+    --pardava-navy: #16324f;
+    --pardava-navy-2: #0f2438;
+    --pardava-up: #0d7a4f;
+    --pardava-up-bg: #e7f5ee;
+    --pardava-down: #c23b32;
+    --pardava-down-bg: #f8eaea;
+    --pardava-font: "Vazirmatn", sans-serif;
+    --pardava-serif: "Vazirmatn", sans-serif;
+    --pardava-radius: 12px;
+    --pardava-max: 1180px;
+    --pardava-gutter: clamp(16px, 3vw, 32px);
+    --pardava-ease: cubic-bezier(.22, 1, .36, 1);
+  }
+}
+
+@layer pardava-reset {
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; text-decoration: none; }
+  button, input, select { font: inherit; color: inherit; }
+  button { cursor: pointer; border: 0; background: none; }
+  table { width: 100%; border-collapse: collapse; }
+  ul { list-style: none; }
+}
+
+@layer pardava-base {
+  body {
+    font-family: var(--pardava-font);
+    background: var(--pardava-paper);
+    color: var(--pardava-ink);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  :focus-visible { outline: 2px solid var(--pardava-navy); outline-offset: 2px; }
+  .pardava-num { font-variant-numeric: tabular-nums; letter-spacing: -.02em; }
+}
+
+@layer pardava-layout {
+  .pardava-wrap {
+    width: min(100% - (var(--pardava-gutter) * 2), var(--pardava-max));
+    margin-inline: auto;
+  }
+  .pardava-section { padding-block: 28px; }
+  .pardava-grid {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 16px;
+  }
+  .pardava-span-12 { grid-column: span 12; }
+  .pardava-span-8 { grid-column: span 8; }
+  .pardava-span-7 { grid-column: span 7; }
+  .pardava-span-6 { grid-column: span 6; }
+  .pardava-span-5 { grid-column: span 5; }
+  .pardava-span-4 { grid-column: span 4; }
+  .pardava-span-3 { grid-column: span 3; }
+}
+
+@layer pardava-components {
+  .pardava-tape {
+    background: var(--pardava-navy-2);
+    color: #e8eef4;
+    overflow: hidden;
+    border-bottom: 1px solid color-mix(in oklab, white 10%, transparent);
+    height: 36px;
+    display: flex;
+    align-items: center;
+  }
+  .pardava-tape__track {
+    display: flex;
+    gap: 28px;
+    white-space: nowrap;
+    animation: pardava-marquee 42s linear infinite;
+    padding-inline: 20px;
+  }
+  .pardava-tape__track:hover { animation-play-state: paused; }
+  @keyframes pardava-marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(50%); }
+  }
+  .pardava-tape b { margin-inline: 8px 4px; }
+  .pardava-tape .is-up { color: #8ee0b8; }
+  .pardava-tape .is-down { color: #f0a8a3; }
+
+  .pardava-header {
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    background: color-mix(in oklab, var(--pardava-paper) 92%, transparent);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--pardava-line);
+  }
+  .pardava-header__bar {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    min-height: 64px;
+  }
+  .pardava-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 800;
+  }
+  .pardava-logo__mark {
+    width: 34px; height: 34px; border-radius: 9px;
+    display: grid; place-items: center;
+    background: var(--pardava-navy);
+    color: #fff;
+  }
+  .pardava-logo small {
+    display: block;
+    font-weight: 500;
+    color: var(--pardava-muted);
+    font-size: .75rem;
+  }
+  .pardava-nav { display: flex; gap: 16px; font-size: .92rem; }
+  .pardava-nav a { color: var(--pardava-muted); }
+  .pardava-nav a:hover, .pardava-nav a.is-on { color: var(--pardava-ink); }
+  .pardava-status {
+    margin-right: auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: .82rem;
+    color: var(--pardava-muted);
+  }
+  .pardava-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-size: .78rem;
+    font-weight: 700;
+  }
+  .pardava-pill.is-open { background: var(--pardava-up-bg); color: var(--pardava-up); }
+  .pardava-pill.is-closed { background: var(--pardava-down-bg); color: var(--pardava-down); }
+  .pardava-pill i {
+    width: 7px; height: 7px; border-radius: 50%; background: currentColor;
+    box-shadow: 0 0 0 4px color-mix(in oklab, currentColor 18%, transparent);
+  }
+  .pardava-search {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    height: 38px;
+    padding: 0 12px;
+    border: 1px solid var(--pardava-line);
+    border-radius: 10px;
+    background: var(--pardava-card);
+    min-width: 220px;
+  }
+  .pardava-search input { border: 0; outline: 0; background: none; width: 100%; }
+  .pardava-burger { display: none; width: 40px; height: 40px; }
+
+  .pardava-note { color: var(--pardava-muted); font-size: .86rem; }
+  .pardava-kicker {
+    font-size: .78rem;
+    letter-spacing: .12em;
+    color: var(--pardava-navy);
+    font-weight: 700;
+  }
+  .pardava-title { font-size: 1.35rem; font-weight: 800; margin: 4px 0 6px; }
+
+  .pardava-card {
+    background: var(--pardava-card);
+    border: 1px solid var(--pardava-line);
+    border-radius: var(--pardava-radius);
+    padding: 16px;
+    min-width: 0;
+  }
+  .pardava-card__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+  .pardava-card__head h2, .pardava-card__head h3 { font-size: 1rem; }
+
+  .pardava-idx b {
+    display: block;
+    font-size: 1.55rem;
+    font-weight: 800;
+  }
+  .pardava-chg { font-weight: 700; font-size: .88rem; }
+  .pardava-chg.is-up { color: var(--pardava-up); }
+  .pardava-chg.is-down { color: var(--pardava-down); }
+  .pardava-idx p { color: var(--pardava-muted); font-size: .8rem; }
+
+  .pardava-tabs { display: flex; gap: 4px; flex-wrap: wrap; }
+  .pardava-tabs button {
+    padding: 6px 12px;
+    border-radius: 999px;
+    color: var(--pardava-muted);
+    border: 1px solid transparent;
+  }
+  .pardava-tabs button.is-on {
+    border-color: var(--pardava-line);
+    background: var(--pardava-paper);
+    color: var(--pardava-ink);
+    font-weight: 700;
+  }
+
+  .pardava-tablewrap { overflow: auto; }
+  .pardava-table th, .pardava-table td {
+    text-align: right;
+    padding: 10px 8px;
+    border-bottom: 1px solid var(--pardava-line);
+    font-size: .86rem;
+    white-space: nowrap;
+  }
+  .pardava-table th { color: var(--pardava-muted); font-weight: 600; cursor: pointer; }
+  .pardava-table tbody tr { cursor: pointer; }
+  .pardava-table tbody tr:hover { background: color-mix(in oklab, var(--pardava-navy) 4%, transparent); }
+  .pardava-table tr.is-on { background: color-mix(in oklab, var(--pardava-navy) 7%, transparent); }
+  .pardava-table td.is-flash-up { animation: pardava-flash-up .7s ease; }
+  .pardava-table td.is-flash-down { animation: pardava-flash-down .7s ease; }
+  @keyframes pardava-flash-up { from { background: var(--pardava-up-bg); } to { background: transparent; } }
+  @keyframes pardava-flash-down { from { background: var(--pardava-down-bg); } to { background: transparent; } }
+  .pardava-star { color: var(--pardava-line); }
+  .pardava-star.is-on { color: #c9a227; }
+
+  .pardava-movers li {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--pardava-line);
+    font-size: .88rem;
+  }
+  .pardava-movers li:last-child { border: 0; }
+
+  .pardava-chart { width: 100%; height: 220px; display: block; }
+  .pardava-meta { display: flex; flex-wrap: wrap; gap: 14px; font-size: .82rem; color: var(--pardava-muted); margin-top: 8px; }
+
+  .pardava-book { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; font-size: .82rem; }
+  .pardava-book h4 { margin-bottom: 6px; }
+  .pardava-book li { display: flex; justify-content: space-between; padding: 4px 0; }
+  .pardava-book--buy h4, .pardava-book--buy .pardava-num { color: var(--pardava-up); }
+  .pardava-book--sell h4, .pardava-book--sell .pardava-num { color: var(--pardava-down); }
+
+  .pardava-map { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 72px; gap: 8px; }
+  .pardava-map button {
+    border-radius: 10px;
+    padding: 8px;
+    text-align: right;
+    color: #fff;
+    font-size: .78rem;
+    overflow: hidden;
+  }
+  .pardava-map button b { display: block; font-size: .95rem; }
+
+  .pardava-news { display: grid; gap: 0; }
+  .pardava-news article {
+    display: block;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--pardava-line);
+  }
+  .pardava-news time { color: var(--pardava-muted); font-size: .75rem; }
+  .pardava-news h3 { font-size: .95rem; font-weight: 700; }
+  .pardava-feature {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--pardava-radius);
+    min-height: 220px;
+  }
+  .pardava-feature img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(.15) contrast(1.05); }
+  .pardava-feature figcaption {
+    position: absolute; inset: auto 0 0;
+    padding: 28px 16px 14px;
+    background: linear-gradient(transparent, color-mix(in oklab, var(--pardava-navy-2) 88%, transparent));
+    color: #fff;
+  }
+
+  .pardava-form { display: grid; gap: 10px; }
+  .pardava-field label { display: block; font-size: .8rem; color: var(--pardava-muted); }
+  .pardava-field input, .pardava-field select {
+    width: 100%;
+    height: 40px;
+    padding: 0 10px;
+    border: 1px solid var(--pardava-line);
+    border-radius: 8px;
+    background: #fff;
+  }
+  .pardava-btn {
+    height: 40px;
+    padding: 0 14px;
+    border-radius: 8px;
+    background: var(--pardava-navy);
+    color: #fff;
+    font-weight: 700;
+  }
+  .pardava-btn--ghost {
+    background: transparent;
+    color: var(--pardava-ink);
+    border: 1px solid var(--pardava-line);
+  }
+  .pardava-result {
+    padding: 12px;
+    background: var(--pardava-paper);
+    border-radius: 8px;
+    font-weight: 700;
+  }
+
+  .pardava-cal li {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--pardava-line);
+    font-size: .86rem;
+  }
+
+  .pardava-drawer {
+    position: fixed;
+    inset: 0 auto 0 0;
+    width: min(420px, 100vw);
+    background: var(--pardava-card);
+    border-right: 1px solid var(--pardava-line);
+    transform: translateX(-110%);
+    transition: transform .3s var(--pardava-ease);
+    z-index: 50;
+    padding: 20px;
+    overflow: auto;
+  }
+  .pardava-drawer.is-on { transform: none; }
+  .pardava-scrim {
+    display: none;
+    position: fixed; inset: 0;
+    background: color-mix(in oklab, black 35%, transparent);
+    z-index: 40;
+  }
+  .pardava-scrim.is-on { display: block; }
+  .pardava-toast {
+    position: fixed;
+    bottom: 18px; left: 18px;
+    background: var(--pardava-navy);
+    color: #fff;
+    padding: 10px 14px;
+    border-radius: 10px;
+    opacity: 0;
+    transform: translateY(10px);
+    pointer-events: none;
+    transition: .25s var(--pardava-ease);
+    z-index: 60;
+  }
+  .pardava-toast.is-on { opacity: 1; transform: none; }
+
+  .pardava-footer {
+    border-top: 1px solid var(--pardava-line);
+    padding: 28px 0 40px;
+    color: var(--pardava-muted);
+    font-size: .84rem;
+  }
+  .pardava-footer__grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 20px; }
+}
+
+@layer pardava-responsive {
+  @media (max-width: 1020px) {
+    .pardava-span-8, .pardava-span-7, .pardava-span-5, .pardava-span-6 { grid-column: span 12; }
+    .pardava-span-4, .pardava-span-3 { grid-column: span 6; }
+    .pardava-nav { display: none; }
+    .pardava-nav.is-open {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 100%;
+      right: 0; left: 0;
+      background: var(--pardava-card);
+      border-bottom: 1px solid var(--pardava-line);
+      padding: 12px 20px 16px;
+    }
+    .pardava-burger { display: grid; place-items: center; }
+    .pardava-search { min-width: 0; flex: 1; }
+    .pardava-map { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 640px) {
+    .pardava-span-4, .pardava-span-3 { grid-column: span 12; }
+    .pardava-status span:last-child { display: none; }
+    .pardava-news article { grid-template-columns: 1fr; }
+    .pardava-news img { display: none; }
+    .pardava-footer__grid { grid-template-columns: 1fr; }
+    .pardava-header__bar { flex-wrap: wrap; padding-block: 8px; }
+  }
+}

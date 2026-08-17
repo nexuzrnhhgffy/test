@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>پرداوا | بازار بورس</title>
+  <meta name="description" content="متن تستی: بازار بورس پرداوا؛ قیمت نماد، شاخص، دیده‌بان و اخبار بدون تبلیغ.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <div class="pardava-tape" aria-label="نوار قیمت زنده آزمایشی">
+    <div class="pardava-tape__track" id="pardava-tape"></div>
+  </div>
+
+  <header class="pardava-header" id="pardava-header">
+    <div class="pardava-wrap pardava-header__bar">
+      <a class="pardava-logo" href="#pardava-market">
+        <span class="pardava-logo__mark" aria-hidden="true">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19V6M4 19h16"/><path d="M8 15l3-5 3 3 5-7"/></svg>
+        </span>
+        <span>پرداوا<small>بازار بورس — متن تستی</small></span>
+      </a>
+      <nav class="pardava-nav" id="pardava-nav" aria-label="منوی اصلی">
+        <a href="#pardava-market" class="is-on">بازار</a>
+        <a href="#pardava-watch">دیده‌بان</a>
+        <a href="#pardava-map">صنایع</a>
+        <a href="#pardava-news">اخبار</a>
+        <a href="#pardava-tools">ابزار</a>
+      </nav>
+      <label class="pardava-search">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3-3"/></svg>
+        <input id="pardava-q" type="search" placeholder="جستجوی نماد — مثلاً فولاد">
+      </label>
+      <div class="pardava-status">
+        <span class="pardava-pill is-open" id="pardava-session"><i></i><span>جلسه آزمایشی</span></span>
+        <span id="pardava-clock">—</span>
+      </div>
+      <button class="pardava-burger" id="pardava-burger" type="button" aria-label="منو">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16M4 12h16M4 17h10"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="pardava-section" id="pardava-market">
+      <div class="pardava-wrap">
+        <p class="pardava-kicker">بازار نقد</p>
+        <h1 class="pardava-title">نمای زنده بورس پرداوا</h1>
+        <p class="pardava-note">قیمت‌ها شبیه‌سازی‌شده‌اند و هر لحظه کمی حرکت می‌کنند. این صفحه تبلیغ ندارد و داده واقعی بورس نیست.</p>
+        <div class="pardava-grid" style="margin-top:18px">
+          <article class="pardava-card pardava-idx pardava-span-3" data-pardava-idx="tedpix">
+            <p>شاخص کل</p>
+            <b class="pardava-num" id="pardava-tedpix">۲٬۱۴۸٬۳۲۰</b>
+            <span class="pardava-chg is-up" id="pardava-tedpix-ch">+۰٫۴۲٪</span>
+          </article>
+          <article class="pardava-card pardava-idx pardava-span-3" data-pardava-idx="equal">
+            <p>شاخص هم‌وزن</p>
+            <b class="pardava-num" id="pardava-equal">۷۱۸٬۴۵۰</b>
+            <span class="pardava-chg is-down" id="pardava-equal-ch">−۰٫۱۸٪</span>
+          </article>
+          <article class="pardava-card pardava-idx pardava-span-3">
+            <p>ارزش معاملات</p>
+            <b class="pardava-num" id="pardava-value">۹٫۴ همت</b>
+            <span class="pardava-note">حجم <span id="pardava-volume">۱۲٫۱ میلیارد</span></span>
+          </article>
+          <article class="pardava-card pardava-idx pardava-span-3">
+            <p>صف خرید / فروش</p>
+            <b class="pardava-num" id="pardava-queue">۶۲ / ۴۱</b>
+            <span class="pardava-note">نماد آزمایشی</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="pardava-section" id="pardava-chart">
+      <div class="pardava-wrap pardava-grid">
+        <article class="pardava-card pardava-span-7">
+          <div class="pardava-card__head">
+            <h2 id="pardava-sel-name">فولاد</h2>
+            <button class="pardava-btn pardava-btn--ghost" id="pardava-pin" type="button">افزودن به دیده‌بان</button>
+          </div>
+          <p><b class="pardava-num" id="pardava-sel-price">۴٬۲۱۰</b> <span class="pardava-chg" id="pardava-sel-ch"></span></p>
+          <svg class="pardava-chart" id="pardava-svg" viewBox="0 0 640 220" preserveAspectRatio="none"></svg>
+          <div class="pardava-meta">
+            <span>باز: <b class="pardava-num" id="pardava-sel-open">—</b></span>
+            <span>کم: <b class="pardava-num" id="pardava-sel-low">—</b></span>
+            <span>زیاد: <b class="pardava-num" id="pardava-sel-high">—</b></span>
+            <span>حجم: <b class="pardava-num" id="pardava-sel-vol">—</b></span>
+            <span>P/E تستی: <b class="pardava-num" id="pardava-sel-pe">—</b></span>
+          </div>
+          <div class="pardava-book" style="margin-top:14px">
+            <div class="pardava-book--buy">
+              <h4>صف خرید آزمایشی</h4>
+              <ul id="pardava-bid"></ul>
+            </div>
+            <div class="pardava-book--sell">
+              <h4>صف فروش آزمایشی</h4>
+              <ul id="pardava-ask"></ul>
+            </div>
+          </div>
+        </article>
+        <article class="pardava-card pardava-span-5">
+          <div class="pardava-card__head">
+            <h2>بیشترین تغییر</h2>
+            <div class="pardava-tabs" id="pardava-mover-tabs">
+              <button type="button" class="is-on" data-pardava-mover="up">مثبت</button>
+              <button type="button" data-pardava-mover="down">منفی</button>
+              <button type="button" data-pardava-mover="vol">حجم</button>
+            </div>
+          </div>
+          <ul class="pardava-movers" id="pardava-movers"></ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="pardava-section" id="pardava-watch">
+      <div class="pardava-wrap">
+        <article class="pardava-card">
+          <div class="pardava-card__head">
+            <h2>تابلوی زنده نمادها</h2>
+            <div class="pardava-tabs" id="pardava-board-tabs">
+              <button type="button" class="is-on" data-pardava-board="all">همه</button>
+              <button type="button" data-pardava-board="watch">دیده‌بان</button>
+              <button type="button" data-pardava-board="buy">صف خرید</button>
+              <button type="button" data-pardava-board="sell">صف فروش</button>
+            </div>
+          </div>
+          <div class="pardava-tablewrap">
+            <table class="pardava-table" id="pardava-board">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th data-pardava-sort="name">نماد</th>
+                  <th data-pardava-sort="price">قیمت</th>
+                  <th data-pardava-sort="chg">تغییر</th>
+                  <th data-pardava-sort="vol">حجم</th>
+                  <th data-pardava-sort="value">ارزش</th>
+                  <th>صنعت</th>
+                  <th>وضعیت</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+          <p class="pardava-note" style="margin-top:10px">برای جزئیات روی ردیف کلیک کنید. ستاره نماد را در دیده‌بان نگه می‌دارد.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="pardava-section" id="pardava-map">
+      <div class="pardava-wrap">
+        <p class="pardava-kicker">وزن صنایع</p>
+        <h2 class="pardava-title">نقشه بازار آزمایشی</h2>
+        <div class="pardava-map" id="pardava-sectors"></div>
+      </div>
+    </section>
+
+    <section class="pardava-section" id="pardava-news">
+      <div class="pardava-wrap pardava-grid">
+        <article class="pardava-span-5">
+          <figure class="pardava-feature">
+            <img src="assets/images/city.jpg" alt="نمای معماری شهری — تصویر تزئینی خبر" width="900" height="599">
+            <figcaption>
+              <time>امروز — متن تستی</time>
+              <h2>شاخص کل در جلسه آزمایشی با حجم متعادل نوسان کرد</h2>
+            </figcaption>
+          </figure>
+        </article>
+        <article class="pardava-card pardava-span-7">
+          <div class="pardava-card__head">
+            <h2>اخبار بازار</h2>
+            <div class="pardava-tabs" id="pardava-news-tabs">
+              <button type="button" class="is-on" data-pardava-news="all">همه</button>
+              <button type="button" data-pardava-news="macro">کلان</button>
+              <button type="button" data-pardava-news="co">شرکت‌ها</button>
+            </div>
+          </div>
+          <div class="pardava-news" id="pardava-news-list"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="pardava-section" id="pardava-tools">
+      <div class="pardava-wrap pardava-grid">
+        <article class="pardava-card pardava-span-6">
+          <h2>ماشین‌حساب بازده</h2>
+          <p class="pardava-note">خرید و فروش فرضی؛ نتیجه ذخیره نمی‌شود.</p>
+          <form class="pardava-form" id="pardava-calc" style="margin-top:12px">
+            <div class="pardava-field">
+              <label for="pardava-buy">قیمت خرید (ریال)</label>
+              <input id="pardava-buy" inputmode="numeric" value="4210">
+            </div>
+            <div class="pardava-field">
+              <label for="pardava-sell">قیمت فروش (ریال)</label>
+              <input id="pardava-sell" inputmode="numeric" value="4480">
+            </div>
+            <div class="pardava-field">
+              <label for="pardava-qty">تعداد سهم</label>
+              <input id="pardava-qty" inputmode="numeric" value="1000">
+            </div>
+            <button class="pardava-btn" type="submit">محاسبه تستی</button>
+            <div class="pardava-result" id="pardava-calc-out">بازده خالص نمایش داده می‌شود.</div>
+          </form>
+        </article>
+        <article class="pardava-card pardava-span-6">
+          <h2>تقویم بازار</h2>
+          <p class="pardava-note">رویدادهای ساختگی هفته جاری.</p>
+          <ul class="pardava-cal" id="pardava-cal"></ul>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="pardava-footer">
+    <div class="pardava-wrap pardava-footer__grid">
+      <div>
+        <strong>پرداوا بورس</strong>
+        <p>قالب آزمایشی بازار سرمایه. بدون بنر، بدون اسپانسر، بدون ستون تبلیغ. قیمت‌ها زندهٔ شبیه‌سازی‌شده هستند.</p>
+      </div>
+      <div>
+        <strong>دسترسی</strong>
+        <p><a href="#pardava-watch">تابلو</a></p>
+        <p><a href="#pardava-news">اخبار</a></p>
+        <p><a href="#pardava-tools">ابزار</a></p>
+      </div>
+      <div>
+        <strong>تماس نمونه</strong>
+        <p>market@pardava.test</p>
+        <p>همه کلاس‌ها با پیشوند pardava</p>
+      </div>
+    </div>
+  </footer>
+
+  <aside class="pardava-drawer" id="pardava-drawer" aria-label="جزئیات نماد"></aside>
+  <div class="pardava-scrim" id="pardava-scrim"></div>
+  <div class="pardava-toast" id="pardava-toast" role="status"></div>
+  <script src="assets/scripts.js"></script>
+</body>
+</html>

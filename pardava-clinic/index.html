@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" data-pardava-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>پرداوا | پنل مدیریت مطب</title>
+  <meta name="description" content="متن تستی: پنل تک‌صفحه مدیریت مطب پرداوا برای نوبت، پرونده، نسخه و صندوق. داده واقعی نیست.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <a class="pardava-skip" href="#pardava-main">رفتن به محتوا</a>
+  <div class="pardava-app" id="pardava-app">
+    <aside class="pardava-sidebar" id="pardava-sidebar">
+      <a class="pardava-brand" href="#pardava-view-dashboard" data-pardava-view="dashboard">
+        <span class="pardava-brand__mark" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 4v16M4 12h16"/><rect x="3" y="3" width="18" height="18" rx="4"/></svg>
+        </span>
+        <span><b>مطب پرداوا</b><small>مدیریت کلینیک — متن تستی</small></span>
+      </a>
+      <nav class="pardava-nav" id="pardava-nav" aria-label="منوی مطب">
+        <p class="pardava-nav__group">عملیات روزانه</p>
+        <button class="pardava-nav__btn is-active" type="button" data-pardava-view="dashboard">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+          <span class="pardava-nav__label">داشبورد</span>
+        </button>
+        <button class="pardava-nav__btn" type="button" data-pardava-view="appointments">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></svg>
+          <span class="pardava-nav__label">نوبت‌دهی</span>
+          <span class="pardava-nav__badge">۷</span>
+        </button>
+        <button class="pardava-nav__btn" type="button" data-pardava-view="patients">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="9" cy="8" r="3"/><path d="M4 19a5 5 0 0110 0"/><circle cx="17" cy="9" r="2"/><path d="M15 19a4 4 0 015-3"/></svg>
+          <span class="pardava-nav__label">پرونده بیماران</span>
+        </button>
+        <button class="pardava-nav__btn" type="button" data-pardava-view="visits">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M9 5H6a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V7a2 2 0 00-2-2h-3"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 12h6M9 16h4"/></svg>
+          <span class="pardava-nav__label">ویزیت‌ها</span>
+        </button>
+        <button class="pardava-nav__btn" type="button" data-pardava-view="rx">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M8 8l8 8M14 6l4 4-8 8-4-4 8-8z"/><path d="M6 16l-2 4"/></svg>
+          <span class="pardava-nav__label">نسخه‌نویسی</span>
+        </button>
+        <p class="pardava-nav__group">اداری</p>
+        <button class="pardava-nav__btn" type="button" data-pardava-view="finance">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18M8 14h2"/></svg>
+          <span class="pardava-nav__label">امور مالی و صندوق</span>
+        </button>
+        <button class="pardava-nav__btn" type="button" data-pardava-view="reports">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 19V5M4 19h16"/><path d="M8 15l3-4 3 2 5-7"/></svg>
+          <span class="pardava-nav__label">گزارش‌ها و آمار</span>
+        </button>
+        <button class="pardava-nav__btn" type="button" data-pardava-view="messages">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 6h16v10H7l-3 3V6z"/></svg>
+          <span class="pardava-nav__label">پیام‌رسانی</span>
+          <span class="pardava-nav__badge">۳</span>
+        </button>
+        <button class="pardava-nav__btn" type="button" data-pardava-view="settings">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 00.3 1.8l.1.1a2 2 0 01-2.8 2.8l-.1-.1a1.7 1.7 0 00-1.8-.3 1.7 1.7 0 00-1 1.5V21a2 2 0 01-4 0v-.1a1.7 1.7 0 00-1-1.5 1.7 1.7 0 00-1.8.3l-.1.1a2 2 0 01-2.8-2.8l.1-.1a1.7 1.7 0 00.3-1.8 1.7 1.7 0 00-1.5-1H3a2 2 0 010-4h.1a1.7 1.7 0 001.5-1 1.7 1.7 0 00-.3-1.8l-.1-.1a2 2 0 012.8-2.8l.1.1a1.7 1.7 0 001.8.3H9a1.7 1.7 0 001-1.5V3a2 2 0 014 0v.1a1.7 1.7 0 001 1.5 1.7 1.7 0 001.8-.3l.1.1a2 2 0 012.8 2.8l-.1.1a1.7 1.7 0 00-.3 1.8V9c.3.6.9 1 1.5 1H21a2 2 0 010 4h-.1a1.7 1.7 0 00-1.5 1z"/></svg>
+          <span class="pardava-nav__label">تنظیمات مطب</span>
+        </button>
+      </nav>
+      <div class="pardava-sidefoot">
+        <span class="pardava-avatar">س</span>
+        <span>
+          <b>دکتر سامان نوری</b><br>
+          <small class="pardava-note">متخصص داخلی — نمایشی</small>
+        </span>
+      </div>
+    </aside>
+
+    <div class="pardava-shell">
+      <header class="pardava-top">
+        <button class="pardava-iconbtn" id="pardava-burger" type="button" aria-label="منو">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16M4 12h16M4 17h10"/></svg>
+        </button>
+        <div class="pardava-top__doc">
+          <b>دکتر سامان نوری</b>
+          <small>فوق تخصص بیماری‌های داخلی · مطب پرداوا</small>
+        </div>
+        <div class="pardava-clock" id="pardava-clock">—</div>
+        <div class="pardava-top__tools">
+          <button class="pardava-iconbtn" id="pardava-theme" type="button" aria-label="دارک‌مود">☾</button>
+          <div class="pardava-dropwrap">
+            <button class="pardava-iconbtn" id="pardava-bell" type="button" aria-label="اعلان‌ها">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 4a6 6 0 016 6c0 7 2 7 2 7H4s2 0 2-7a6 6 0 016-6z"/><path d="M10 19a2 2 0 004 0"/></svg>
+              <span class="pardava-dot"></span>
+            </button>
+            <div class="pardava-drop" id="pardava-bell-drop">
+              <p class="pardava-note">اعلان‌های آزمایشی منشی</p>
+              <p>نوبت ۱۰:۳۰ کیان رستمی در انتظار تایید است.</p>
+              <p>بدهی بیمه تامین نمایشی ثبت شد.</p>
+              <p>یادآوری آزمایش تیروئید برای آرمان نوری.</p>
+            </div>
+          </div>
+          <div class="pardava-dropwrap">
+            <button class="pardava-iconbtn" id="pardava-user" type="button" aria-label="پروفایل">س</button>
+            <div class="pardava-drop" id="pardava-user-drop">
+              <button type="button" data-pardava-view="settings">تنظیمات</button>
+              <button type="button" id="pardava-logout">خروج نمایشی</button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="pardava-main" id="pardava-main">
+        <section class="pardava-view is-on" id="pardava-view-dashboard" data-pardava-title="داشبورد">
+          <div class="pardava-pagehead">
+            <div>
+              <p class="pardava-kicker">نمای کلی مطب</p>
+              <h1 class="pardava-title">داشبورد امروز</h1>
+              <p class="pardava-note">اعداد، نوبت‌ها و نمودارها تستی هستند و پرونده واقعی نیست.</p>
+            </div>
+            <button class="pardava-btn pardava-btn--primary" type="button" data-pardava-view="appointments">نوبت جدید</button>
+          </div>
+          <div class="pardava-grid">
+            <article class="pardava-card pardava-card--glass pardava-kpi pardava-span-3">
+              <div class="pardava-card__head"><h3>بیمار امروز</h3><span class="pardava-delta is-up">+۴</span></div>
+              <b>۱۸</b><p>ویزیت ثبت‌شده نمایشی</p>
+              <svg class="pardava-spark" id="pardava-sp1" viewBox="0 0 120 36" preserveAspectRatio="none"></svg>
+            </article>
+            <article class="pardava-card pardava-card--glass pardava-kpi pardava-span-3">
+              <div class="pardava-card__head"><h3>نوبت باقی‌مانده</h3><span class="pardava-badge pardava-badge--wait">در انتظار</span></div>
+              <b>۷</b><p>تا پایان ساعت کاری</p>
+              <svg class="pardava-spark" id="pardava-sp2" viewBox="0 0 120 36" preserveAspectRatio="none"></svg>
+            </article>
+            <article class="pardava-card pardava-card--glass pardava-kpi pardava-span-3">
+              <div class="pardava-card__head"><h3>درآمد روزانه</h3><span class="pardava-delta is-up">+۹٪</span></div>
+              <b>۲۴٫۸ میلیون</b><p>تومان — صندوق نمایشی</p>
+              <svg class="pardava-spark" id="pardava-sp3" viewBox="0 0 120 36" preserveAspectRatio="none"></svg>
+            </article>
+            <article class="pardava-card pardava-card--glass pardava-kpi pardava-span-3">
+              <div class="pardava-card__head"><h3>بیمار جدید</h3><span class="pardava-badge pardava-badge--info">این هفته</span></div>
+              <b>۵</b><p>پرونده تازه‌بازشده</p>
+              <svg class="pardava-spark" id="pardava-sp4" viewBox="0 0 120 36" preserveAspectRatio="none"></svg>
+            </article>
+            <article class="pardava-card pardava-span-8">
+              <div class="pardava-card__head"><h3>مراجعات هفتگی</h3><span>نمودار تستی</span></div>
+              <svg class="pardava-chart" id="pardava-week" viewBox="0 0 640 220" preserveAspectRatio="none"></svg>
+            </article>
+            <article class="pardava-card pardava-span-4">
+              <div class="pardava-card__head"><h3>نوبت‌های نزدیک</h3><span>امروز</span></div>
+              <div id="pardava-soon"></div>
+            </article>
+          </div>
+        </section>
+
+        <section class="pardava-view" id="pardava-view-appointments" data-pardava-title="نوبت‌دهی">
+          <div class="pardava-pagehead">
+            <div>
+              <p class="pardava-kicker">تقویم مطب</p>
+              <h1 class="pardava-title">نوبت‌دهی</h1>
+              <p class="pardava-note">تقویم شمسی نمایشی. کارت نوبت را بکشید و روی روز یا ساعت رها کنید.</p>
+            </div>
+            <div class="pardava-cal-tools">
+              <div class="pardava-cal-tools" id="pardava-cal-mode" role="group">
+                <button class="pardava-btn pardava-btn--ghost is-on" type="button" data-pardava-cal="month">ماهانه</button>
+                <button class="pardava-btn pardava-btn--ghost" type="button" data-pardava-cal="week">هفتگی</button>
+                <button class="pardava-btn pardava-btn--ghost" type="button" data-pardava-cal="day">روزانه</button>
+              </div>
+              <button class="pardava-btn pardava-btn--primary" type="button" id="pardava-book">رزرو آنلاین بیمار</button>
+            </div>
+          </div>
+          <div class="pardava-grid" style="margin-top:14px">
+            <article class="pardava-card pardava-span-12">
+              <div class="pardava-card__head">
+                <h3 id="pardava-cal-title">مرداد ۱۴۰۵</h3>
+                <span>کشیدن و رها کردن فعال است</span>
+              </div>
+              <div id="pardava-cal-mount"></div>
+            </article>
+          </div>
+        </section>
+
+        <section class="pardava-view" id="pardava-view-patients" data-pardava-title="پرونده بیماران">
+          <div class="pardava-pagehead">
+            <div>
+              <p class="pardava-kicker">پرونده الکترونیک</p>
+              <h1 class="pardava-title">بیماران</h1>
+              <p class="pardava-note">جستجو و پرونده‌ها ساختگی‌اند. تصویر چهره بیمار در این قالب نیست.</p>
+            </div>
+            <input class="pardava-searchbox" id="pardava-patient-q" placeholder="جستجوی نام یا کد ملی نمایشی">
+          </div>
+          <div class="pardava-grid" style="margin-top:14px">
+            <article class="pardava-card pardava-span-5">
+              <div class="pardava-card__head"><h3>فهرست بیماران</h3><span id="pardava-patient-count"></span></div>
+              <div id="pardava-patient-list"></div>
+              <div class="pardava-pager" id="pardava-patient-pager"></div>
+            </article>
+            <article class="pardava-card pardava-span-7" id="pardava-patient-detail"></article>
+          </div>
+        </section>
+
+        <section class="pardava-view" id="pardava-view-visits" data-pardava-title="ویزیت">
+          <div class="pardava-pagehead">
+            <div>
+              <p class="pardava-kicker">ثبت ویزیت</p>
+              <h1 class="pardava-title">ویزیت جاری</h1>
+              <p class="pardava-note">فرم علائم، معاینه و تشخیص — ذخیره واقعی انجام نمی‌شود.</p>
+            </div>
+          </div>
+          <form class="pardava-grid" id="pardava-visit-form" style="margin-top:14px">
+            <article class="pardava-card pardava-span-8">
+              <div class="pardava-form-2">
+                <div class="pardava-field"><label>بیمار</label><select id="pardava-visit-patient"></select></div>
+                <div class="pardava-field"><label>شکایت اصلی</label><input value="سردرد و خستگی"></div>
+                <div class="pardava-field"><label>علائم</label><textarea>سردرد فشاری از دو روز پیش، بدون تهوع.</textarea></div>
+                <div class="pardava-field"><label>معاینه</label><textarea>فشار ۱۲/۸، ضربان ۷۸، حلق کمی قرمز.</textarea></div>
+                <div class="pardava-field"><label>تشخیص</label><input value="سردرد تنشی — نمایشی"></div>
+                <div class="pardava-field"><label>دستور دارویی</label><textarea>استامینوفن ۵۰۰ هر ۸ ساعت، سه روز.</textarea></div>
+              </div>
+              <button class="pardava-btn pardava-btn--primary" type="submit" style="margin-top:12px">ثبت ویزیت نمایشی</button>
+            </article>
+            <article class="pardava-card pardava-span-4">
+              <h3>پیوست آزمایش / رادیولوژی</h3>
+              <p class="pardava-note" style="margin:8px 0 12px">آپلود واقعی نیست؛ فقط انتخاب فایل نمایشی.</p>
+              <div class="pardava-files">
+                <label class="pardava-file">آزمایش خون<input type="file" hidden></label>
+                <label class="pardava-file">رادیولوژی<input type="file" hidden></label>
+                <label class="pardava-file">سایر اسناد<input type="file" hidden></label>
+              </div>
+            </article>
+          </form>
+        </section>
+
+        <section class="pardava-view" id="pardava-view-rx" data-pardava-title="نسخه‌نویسی">
+          <div class="pardava-pagehead">
+            <div>
+              <p class="pardava-kicker">نسخه الکترونیک</p>
+              <h1 class="pardava-title">نسخه‌نویسی</h1>
+              <p class="pardava-note">بانک دارو آزمایشی است. چاپ و ارسال واقعی انجام نمی‌شود.</p>
+            </div>
+            <div class="pardava-cal-tools">
+              <button class="pardava-btn pardava-btn--ghost" type="button" id="pardava-rx-print">چاپ نسخه</button>
+              <button class="pardava-btn pardava-btn--primary" type="button" id="pardava-rx-send">ارسال نمایشی</button>
+            </div>
+          </div>
+          <div class="pardava-grid" style="margin-top:14px">
+            <article class="pardava-card pardava-span-5">
+              <figure class="pardava-media">
+                <img src="assets/images/pharmacy-medicines.jpg" alt="بسته داروهای نمایشی برای نسخه‌نویسی" width="800" height="559">
+                <figcaption>بانک داروی آزمایشی مطب — تصویر تزئینی</figcaption>
+              </figure>
+              <div class="pardava-field" style="margin-top:12px"><label>جستجوی دارو</label><input id="pardava-drug-q" placeholder="نام ژنریک یا برند تستی"></div>
+              <div id="pardava-drug-list" style="margin-top:10px"></div>
+            </article>
+            <article class="pardava-card pardava-span-7">
+              <div class="pardava-card__head"><h3>نسخه جاری</h3><span>دکتر سامان نوری</span></div>
+              <div class="pardava-form-2">
+                <div class="pardava-field"><label>دوز</label><input id="pardava-rx-dose" value="۵۰۰ میلی‌گرم"></div>
+                <div class="pardava-field"><label>مدت مصرف</label><input id="pardava-rx-days" value="۵ روز"></div>
+              </div>
+              <div class="pardava-rx-list" id="pardava-rx-items"></div>
+              <h3>تاریخچه نسخه‌های قبلی</h3>
+              <div class="pardava-tablewrap" style="margin-top:8px">
+                <table class="pardava-table">
+                  <thead><tr><th>تاریخ</th><th>دارو</th><th>وضعیت</th></tr></thead>
+                  <tbody id="pardava-rx-hist"></tbody>
+                </table>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="pardava-view" id="pardava-view-finance" data-pardava-title="امور مالی">
+          <div class="pardava-pagehead">
+            <div>
+              <p class="pardava-kicker">صندوق</p>
+              <h1 class="pardava-title">امور مالی</h1>
+              <p class="pardava-note">پرداخت، فاکتور و بیمه — همه اعداد نمایشی‌اند.</p>
+            </div>
+            <button class="pardava-btn pardava-btn--primary" type="button" id="pardava-invoice">صدور فاکتور</button>
+          </div>
+          <div class="pardava-grid" style="margin-top:14px">
+            <article class="pardava-card pardava-kpi pardava-span-4"><h3>درآمد امروز</h3><b>۲۴٫۸ میلیون</b><p>نقد + کارت + بیمه</p></article>
+            <article class="pardava-card pardava-kpi pardava-span-4"><h3>درآمد ماه</h3><b>۴۱۲ میلیون</b><p>تومان تستی</p></article>
+            <article class="pardava-card pardava-kpi pardava-span-4"><h3>بدهی باز</h3><b>۱۸٫۲ میلیون</b><p>عمدتاً اسناد بیمه</p></article>
+            <article class="pardava-card pardava-span-12">
+              <form class="pardava-form-2" id="pardava-pay-form" style="margin-bottom:14px">
+                <div class="pardava-field"><label>بیمار</label><select id="pardava-pay-patient"></select></div>
+                <div class="pardava-field"><label>مبلغ (تومان)</label><input value="850000"></div>
+                <div class="pardava-field"><label>روش</label>
+                  <select id="pardava-pay-method"><option>نقد</option><option>کارت</option><option>بیمه</option></select>
+                </div>
+                <div class="pardava-field"><label>&nbsp;</label><button class="pardava-btn pardava-btn--ok" type="submit">ثبت پرداخت</button></div>
+              </form>
+              <div class="pardava-tablewrap">
+                <table class="pardava-table" id="pardava-pay-table">
+                  <thead><tr><th data-pardava-sort="name">بیمار</th><th data-pardava-sort="method">روش</th><th data-pardava-sort="amount">مبلغ</th><th>وضعیت</th></tr></thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+              <div class="pardava-pager" id="pardava-pay-pager"></div>
+            </article>
+          </div>
+        </section>
+
+        <section class="pardava-view" id="pardava-view-reports" data-pardava-title="گزارش‌ها">
+          <div class="pardava-pagehead">
+            <div>
+              <p class="pardava-kicker">تحلیل مطب</p>
+              <h1 class="pardava-title">گزارش‌ها و آمار</h1>
+              <p class="pardava-note">خروجی Excel و PDF فقط پیام نمایشی می‌دهد.</p>
+            </div>
+            <div class="pardava-cal-tools">
+              <button class="pardava-btn pardava-btn--ghost" type="button" id="pardava-xls">خروجی Excel</button>
+              <button class="pardava-btn pardava-btn--primary" type="button" id="pardava-pdf">خروجی PDF</button>
+            </div>
+          </div>
+          <div class="pardava-grid" style="margin-top:14px">
+            <article class="pardava-card pardava-span-8">
+              <div class="pardava-card__head"><h3>تعداد بیماران ماهانه</h3><span>۱۲ ماه تستی</span></div>
+              <svg class="pardava-chart" id="pardava-month" viewBox="0 0 640 220" preserveAspectRatio="none"></svg>
+            </article>
+            <article class="pardava-card pardava-span-4">
+              <div class="pardava-card__head"><h3>بیماری‌های شایع</h3><span>سهم نمایشی</span></div>
+              <svg class="pardava-chart pardava-chart--sm" id="pardava-donut" viewBox="0 0 220 160"></svg>
+              <div class="pardava-legend" id="pardava-donut-leg"></div>
+            </article>
+            <article class="pardava-card pardava-span-12">
+              <div class="pardava-card__head"><h3>درآمد ماهانه</h3><span>میلیون تومان</span></div>
+              <svg class="pardava-chart pardava-chart--sm" id="pardava-income" viewBox="0 0 640 180" preserveAspectRatio="none"></svg>
+            </article>
+          </div>
+        </section>
+
+        <section class="pardava-view" id="pardava-view-messages" data-pardava-title="پیام‌رسانی">
+          <div class="pardava-pagehead">
+            <div>
+              <p class="pardava-kicker">یادآوری</p>
+              <h1 class="pardava-title">پیام‌رسانی و نوبت</h1>
+              <p class="pardava-note">پیامک و نوتیفیکیشن ارسال واقعی نمی‌شود.</p>
+            </div>
+          </div>
+          <div class="pardava-grid" style="margin-top:14px">
+            <article class="pardava-card pardava-span-7">
+              <form class="pardava-form" id="pardava-msg-form">
+                <div class="pardava-form-2">
+                  <div class="pardava-field"><label>گیرنده</label><select id="pardava-msg-to"></select></div>
+                  <div class="pardava-field"><label>نوع پیام</label>
+                    <select id="pardava-msg-kind">
+                      <option>یادآوری نوبت</option>
+                      <option>پیام به بیمار</option>
+                      <option>اعلان داخلی منشی</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="pardava-field"><label>متن</label><textarea>یادآوری نوبت فردا ساعت ۱۰:۳۰ در مطب پرداوا.</textarea></div>
+                <button class="pardava-btn pardava-btn--primary" type="submit">ارسال پیامک نمایشی</button>
+              </form>
+            </article>
+            <article class="pardava-card pardava-span-5">
+              <figure class="pardava-media">
+                <img src="assets/images/clinic-reception.jpg" alt="پذیرش مطب برای یادآوری حضوری و پیامکی" width="800" height="544">
+                <figcaption>کانال یادآوری از پذیرش مطب — تصویر تزئینی</figcaption>
+              </figure>
+              <h3 style="margin-top:14px">صف یادآوری</h3>
+              <div id="pardava-msg-list" style="margin-top:10px"></div>
+            </article>
+          </div>
+        </section>
+
+        <section class="pardava-view" id="pardava-view-settings" data-pardava-title="تنظیمات">
+          <div class="pardava-pagehead">
+            <div>
+              <p class="pardava-kicker">سامانه</p>
+              <h1 class="pardava-title">تنظیمات مطب</h1>
+              <p class="pardava-note">کاربران، ساعات، تعرفه و پشتیبان — همه نمایشی.</p>
+            </div>
+            <button class="pardava-btn pardava-btn--primary" type="button" id="pardava-backup">پشتیبان‌گیری اطلاعات</button>
+          </div>
+          <div class="pardava-grid" style="margin-top:14px">
+            <article class="pardava-card pardava-span-6">
+              <h3>کاربران</h3>
+              <div class="pardava-tablewrap" style="margin-top:10px">
+                <table class="pardava-table">
+                  <thead><tr><th>نام</th><th>نقش</th><th>وضعیت</th></tr></thead>
+                  <tbody>
+                    <tr><td>دکتر سامان نوری</td><td>پزشک</td><td><span class="pardava-badge pardava-badge--ok">فعال</span></td></tr>
+                    <tr><td>کیان رستمی</td><td>منشی</td><td><span class="pardava-badge pardava-badge--ok">فعال</span></td></tr>
+                    <tr><td>آرمان نوری</td><td>دستیار</td><td><span class="pardava-badge pardava-badge--wait">مرخصی</span></td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+            <article class="pardava-card pardava-span-6">
+              <h3>ساعات کاری</h3>
+              <div class="pardava-hours"><span>شنبه–چهارشنبه</span><div class="pardava-progress"><i style="width:70%"></i></div></div>
+              <p class="pardava-note">۱۰ تا ۱۹ — نمایشی</p>
+              <div class="pardava-hours"><span>پنجشنبه</span><div class="pardava-progress"><i style="width:40%"></i></div></div>
+              <p class="pardava-note">۱۰ تا ۱۴</p>
+              <h3 style="margin-top:16px">تعرفه‌ها</h3>
+              <p>ویزیت داخلی: ۸۵۰٬۰۰۰ تومان</p>
+              <p>ویزیت مجدد: ۶۵۰٬۰۰۰ تومان</p>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+  <div class="pardava-toast" id="pardava-toast" role="status"></div>
+  <script src="assets/scripts.js"></script>
+</body>
+</html>
