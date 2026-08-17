@@ -11,6 +11,7 @@ GitHub cannot show a diff for zip and image files. Use the download links below 
 - Stock market (82 KB): https://github.com/nexuzrnhhgffy/test/raw/cursor/pardava-persian-template-a269/pardava-bourse.zip
 - Newsroom (765 KB): https://github.com/nexuzrnhhgffy/test/raw/cursor/pardava-persian-template-a269/pardava-news.zip
 - Realtor (923 KB): https://github.com/nexuzrnhhgffy/test/raw/cursor/pardava-persian-template-a269/pardava-realtor.zip
+- Clinic panel (16 KB): https://github.com/nexuzrnhhgffy/test/raw/cursor/pardava-persian-template-a269/pardava-clinic.zip
 
 All zips are under 2 MB.
 
@@ -67,3 +68,11 @@ All zips are under 2 MB.
 - Preview: `pardava-realtor-preview.jpg`
 - Source: `pardava-realtor/index.html`, `pardava-realtor/property.html`, `pardava-realtor/area.html`, `pardava-realtor/assets/`
 - Luxury personal-brand real estate site (not a classifieds platform); homepage + property detail + area landing; search, listings, leads, market stats; all classes and variables use the `pardava` prefix
+
+## Clinic — پرداوا | پنل مدیریت مطب
+
+- Slug: `pardava-clinic`
+- Zip: `pardava-clinic.zip`
+- Preview: `pardava-clinic-preview.jpg`
+- Source: `pardava-clinic/index.html`, `pardava-clinic/assets/`
+- Single-page RTL medical office admin; dashboard, appointments, EHR, visits, e-prescription, finance, reports, messaging, settings; light/dark mode; all classes and variables use the `pardava` prefix

@@ -1,0 +1,370 @@
+@layer pardava-reset, pardava-tokens, pardava-base, pardava-shell, pardava-components, pardava-views, pardava-responsive;
+
+@layer pardava-tokens {
+  :root {
+    --pardava-bg: #f8fafc;
+    --pardava-bg-2: #eef4f7;
+    --pardava-surface: #ffffff;
+    --pardava-ink: #1e293b;
+    --pardava-muted: #64748b;
+    --pardava-line: #e2e8f0;
+    --pardava-primary: #0ea5a0;
+    --pardava-primary-2: #0891b2;
+    --pardava-secondary: #10b981;
+    --pardava-accent: #6366f1;
+    --pardava-warn: #f59e0b;
+    --pardava-danger: #ef4444;
+    --pardava-ok: #22c55e;
+    --pardava-glass: color-mix(in srgb, #fff 72%, transparent);
+    --pardava-grad: linear-gradient(135deg, #0ea5a0, #6366f1);
+    --pardava-font: "Vazirmatn", sans-serif;
+    --pardava-radius: 16px;
+    --pardava-radius-sm: 10px;
+    --pardava-shadow: 0 12px 32px color-mix(in srgb, #0f172a 8%, transparent);
+    --pardava-ease: cubic-bezier(.22, 1, .36, 1);
+    --pardava-sidebar: 268px;
+    --pardava-top: 68px;
+  }
+  html[data-pardava-theme="dark"] {
+    --pardava-bg: #0f172a;
+    --pardava-bg-2: #111c33;
+    --pardava-surface: #1e293b;
+    --pardava-ink: #e2e8f0;
+    --pardava-muted: #94a3b8;
+    --pardava-line: #334155;
+    --pardava-glass: color-mix(in srgb, #1e293b 78%, transparent);
+    --pardava-shadow: 0 16px 40px color-mix(in srgb, #000 38%, transparent);
+  }
+}
+
+@layer pardava-reset {
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; text-decoration: none; }
+  button, input, select, textarea { font: inherit; color: inherit; }
+  button { cursor: pointer; border: 0; background: none; }
+  ul { list-style: none; }
+  table { border-collapse: collapse; width: 100%; }
+  svg { display: block; }
+}
+
+@layer pardava-base {
+  body {
+    font-family: var(--pardava-font);
+    background:
+      radial-gradient(900px 420px at 100% 0%, color-mix(in srgb, var(--pardava-primary) 14%, transparent), transparent 55%),
+      radial-gradient(700px 360px at 0% 100%, color-mix(in srgb, var(--pardava-accent) 10%, transparent), transparent 50%),
+      var(--pardava-bg);
+    color: var(--pardava-ink);
+    line-height: 1.7;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+  :focus-visible { outline: 2px solid var(--pardava-primary); outline-offset: 2px; }
+  ::selection { background: color-mix(in srgb, var(--pardava-primary) 28%, transparent); }
+}
+
+@layer pardava-shell {
+  .pardava-skip {
+    position: absolute; right: -999px; top: 8px; z-index: 90;
+    background: var(--pardava-ink); color: #fff; padding: 8px 12px; border-radius: 8px;
+  }
+  .pardava-skip:focus { right: 12px; }
+  .pardava-app {
+    display: grid;
+    grid-template-columns: var(--pardava-sidebar) 1fr;
+    min-height: 100vh;
+  }
+  .pardava-app.is-collapsed { --pardava-sidebar: 84px; }
+  .pardava-sidebar {
+    position: sticky; top: 0; height: 100vh;
+    background: color-mix(in srgb, var(--pardava-surface) 88%, transparent);
+    backdrop-filter: blur(18px);
+    border-left: 1px solid var(--pardava-line);
+    display: flex; flex-direction: column;
+    padding: 16px 12px;
+    z-index: 40;
+  }
+  .pardava-brand {
+    display: flex; align-items: center; gap: 10px;
+    padding: 8px 8px 16px;
+    border-bottom: 1px solid var(--pardava-line);
+    margin-bottom: 12px;
+  }
+  .pardava-brand__mark {
+    width: 42px; height: 42px; flex: 0 0 42px;
+    border-radius: 12px; display: grid; place-items: center;
+    color: #fff; background: var(--pardava-grad);
+  }
+  .pardava-brand b { display: block; font-size: 1rem; }
+  .pardava-brand small { color: var(--pardava-primary); font-size: .75rem; font-weight: 700; }
+  .pardava-app.is-collapsed .pardava-brand > span:last-child,
+  .pardava-app.is-collapsed .pardava-nav__label,
+  .pardava-app.is-collapsed .pardava-nav__group,
+  .pardava-app.is-collapsed .pardava-nav__badge,
+  .pardava-app.is-collapsed .pardava-sidefoot > span:last-child { display: none; }
+
+  .pardava-nav { display: flex; flex-direction: column; gap: 3px; flex: 1; overflow: auto; }
+  .pardava-nav__group {
+    margin: 12px 8px 4px;
+    font-size: .7rem; letter-spacing: .12em; color: var(--pardava-muted); font-weight: 700;
+  }
+  .pardava-nav__btn {
+    display: flex; align-items: center; gap: 10px;
+    width: 100%; text-align: right;
+    padding: 9px 11px; border-radius: 12px;
+    color: var(--pardava-muted);
+    transition: background .25s var(--pardava-ease), color .25s;
+  }
+  .pardava-nav__btn svg { width: 18px; height: 18px; flex: 0 0 18px; }
+  .pardava-nav__btn:hover { background: color-mix(in srgb, var(--pardava-primary) 8%, transparent); color: var(--pardava-ink); }
+  .pardava-nav__btn.is-active {
+    background: color-mix(in srgb, var(--pardava-primary) 14%, var(--pardava-surface));
+    color: var(--pardava-primary-2);
+    box-shadow: inset 3px 0 0 var(--pardava-primary);
+  }
+  .pardava-nav__badge {
+    margin-right: auto;
+    background: color-mix(in srgb, var(--pardava-warn) 18%, var(--pardava-surface));
+    color: var(--pardava-warn);
+    font-size: .68rem; padding: 1px 7px; border-radius: 999px; font-weight: 800;
+  }
+  .pardava-sidefoot {
+    display: flex; align-items: center; gap: 10px;
+    padding: 12px 8px 4px;
+    border-top: 1px solid var(--pardava-line); margin-top: 10px;
+  }
+  .pardava-avatar {
+    width: 36px; height: 36px; border-radius: 50%;
+    display: grid; place-items: center; font-weight: 800;
+    background: var(--pardava-grad); color: #fff;
+  }
+  .pardava-shell { min-width: 0; display: flex; flex-direction: column; }
+  .pardava-top {
+    position: sticky; top: 0; z-index: 30;
+    height: var(--pardava-top);
+    display: flex; align-items: center; gap: 12px;
+    padding: 0 20px;
+    background: var(--pardava-glass);
+    backdrop-filter: blur(18px);
+    border-bottom: 1px solid var(--pardava-line);
+  }
+  .pardava-top__doc { min-width: 0; }
+  .pardava-top__doc b { display: block; font-size: .95rem; }
+  .pardava-top__doc small { color: var(--pardava-muted); }
+  .pardava-clock {
+    font-variant-numeric: tabular-nums;
+    color: var(--pardava-muted); font-size: .82rem; text-align: left;
+  }
+  .pardava-top__tools { display: flex; align-items: center; gap: 8px; margin-right: auto; }
+  .pardava-main { padding: 22px; display: flex; flex-direction: column; gap: 18px; }
+}
+
+@layer pardava-components {
+  .pardava-iconbtn {
+    width: 40px; height: 40px; border-radius: 12px;
+    display: grid; place-items: center;
+    border: 1px solid var(--pardava-line);
+    background: color-mix(in srgb, var(--pardava-surface) 80%, transparent);
+    color: var(--pardava-ink);
+    position: relative;
+  }
+  .pardava-iconbtn .pardava-dot {
+    position: absolute; top: 8px; left: 8px;
+    width: 8px; height: 8px; border-radius: 50%; background: var(--pardava-danger);
+  }
+  .pardava-btn {
+    position: relative; overflow: hidden;
+    height: 40px; padding: 0 14px; border-radius: 12px;
+    font-weight: 700; font-size: .86rem;
+    background: var(--pardava-ink); color: #fff;
+    transition: transform .2s var(--pardava-ease), filter .2s;
+  }
+  .pardava-btn:hover { transform: translateY(-1px); filter: brightness(1.05); }
+  .pardava-btn--ghost {
+    background: transparent; color: var(--pardava-ink);
+    border: 1px solid var(--pardava-line);
+  }
+  .pardava-btn--ghost.is-on, .pardava-btn.is-on {
+    background: var(--pardava-grad); color: #fff; border: 0;
+  }
+  .pardava-btn--primary { background: var(--pardava-grad); color: #fff; }
+  .pardava-btn--ok { background: var(--pardava-ok); }
+  .pardava-ripple {
+    position: absolute; border-radius: 50%;
+    transform: scale(0); animation: pardava-ripple .5s linear;
+    background: color-mix(in srgb, #fff 45%, transparent); pointer-events: none;
+  }
+  @keyframes pardava-ripple { to { transform: scale(3.6); opacity: 0; } }
+
+  .pardava-dropwrap { position: relative; }
+  .pardava-drop {
+    display: none; position: absolute; top: calc(100% + 8px); left: 0;
+    min-width: 240px; padding: 10px;
+    background: var(--pardava-surface);
+    border: 1px solid var(--pardava-line);
+    border-radius: var(--pardava-radius-sm);
+    box-shadow: var(--pardava-shadow); z-index: 20;
+  }
+  .pardava-drop.is-on { display: grid; gap: 6px; }
+  .pardava-drop button, .pardava-drop p { padding: 8px 10px; border-radius: 8px; text-align: right; }
+  .pardava-drop button:hover { background: var(--pardava-bg); }
+
+  .pardava-pagehead { display: flex; justify-content: space-between; gap: 12px; align-items: end; flex-wrap: wrap; }
+  .pardava-kicker { color: var(--pardava-primary); font-size: .75rem; font-weight: 800; letter-spacing: .12em; }
+  .pardava-title { font-size: clamp(1.25rem, 2vw, 1.7rem); margin: 2px 0 4px; }
+  .pardava-note { color: var(--pardava-muted); font-size: .86rem; }
+
+  .pardava-grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 14px; }
+  .pardava-span-12 { grid-column: span 12; }
+  .pardava-span-8 { grid-column: span 8; }
+  .pardava-span-6 { grid-column: span 6; }
+  .pardava-span-4 { grid-column: span 4; }
+  .pardava-span-3 { grid-column: span 3; }
+
+  .pardava-card {
+    background: var(--pardava-surface);
+    border: 1px solid var(--pardava-line);
+    border-radius: var(--pardava-radius);
+    box-shadow: var(--pardava-shadow);
+    padding: 16px;
+    animation: pardava-rise .45s var(--pardava-ease);
+  }
+  .pardava-card--glass {
+    background: var(--pardava-glass);
+    backdrop-filter: blur(16px);
+  }
+  .pardava-card__head { display: flex; justify-content: space-between; gap: 8px; align-items: center; margin-bottom: 10px; }
+  .pardava-card__head h3 { font-size: .95rem; }
+  .pardava-card__head span { color: var(--pardava-muted); font-size: .78rem; }
+  @keyframes pardava-rise { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+  .pardava-kpi b { display: block; font-size: 1.7rem; letter-spacing: -.03em; line-height: 1.2; margin: 4px 0; }
+  .pardava-kpi p { color: var(--pardava-muted); font-size: .8rem; }
+  .pardava-delta { font-size: .75rem; font-weight: 800; padding: 2px 8px; border-radius: 999px; }
+  .pardava-delta.is-up { background: color-mix(in srgb, var(--pardava-ok) 16%, transparent); color: var(--pardava-ok); }
+  .pardava-delta.is-down { background: color-mix(in srgb, var(--pardava-danger) 16%, transparent); color: var(--pardava-danger); }
+
+  .pardava-badge {
+    display: inline-flex; align-items: center; gap: 4px;
+    font-size: .72rem; font-weight: 800; padding: 3px 8px; border-radius: 999px;
+  }
+  .pardava-badge--ok { background: color-mix(in srgb, var(--pardava-ok) 16%, transparent); color: var(--pardava-ok); }
+  .pardava-badge--wait { background: color-mix(in srgb, var(--pardava-warn) 16%, transparent); color: var(--pardava-warn); }
+  .pardava-badge--off { background: color-mix(in srgb, var(--pardava-danger) 16%, transparent); color: var(--pardava-danger); }
+  .pardava-badge--info { background: color-mix(in srgb, var(--pardava-accent) 16%, transparent); color: var(--pardava-accent); }
+
+  .pardava-tablewrap { overflow: auto; }
+  .pardava-table th, .pardava-table td { padding: 10px 8px; text-align: right; border-bottom: 1px solid var(--pardava-line); font-size: .88rem; }
+  .pardava-table th { color: var(--pardava-muted); font-weight: 700; cursor: pointer; white-space: nowrap; }
+  .pardava-table tbody tr:hover { background: color-mix(in srgb, var(--pardava-primary) 6%, transparent); }
+  .pardava-pager { display: flex; gap: 6px; justify-content: flex-end; margin-top: 12px; }
+  .pardava-pager button {
+    min-width: 34px; height: 34px; border-radius: 8px;
+    border: 1px solid var(--pardava-line);
+  }
+  .pardava-pager button.is-on { background: var(--pardava-grad); color: #fff; border: 0; }
+
+  .pardava-field { display: grid; gap: 4px; }
+  .pardava-field label { font-size: .78rem; color: var(--pardava-muted); }
+  .pardava-field input, .pardava-field select, .pardava-field textarea {
+    width: 100%; min-height: 42px; padding: 8px 10px;
+    border: 1px solid var(--pardava-line); border-radius: 10px;
+    background: var(--pardava-bg);
+  }
+  .pardava-field textarea { min-height: 88px; resize: vertical; }
+  .pardava-form { display: grid; gap: 10px; }
+  .pardava-form-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+  .pardava-cal-tools { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  .pardava-cal {
+    display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px;
+  }
+  .pardava-cal__hd { text-align: center; font-size: .78rem; color: var(--pardava-muted); padding: 6px 0; }
+  .pardava-day {
+    min-height: 92px; padding: 6px; border-radius: 12px;
+    border: 1px dashed var(--pardava-line); background: var(--pardava-bg);
+  }
+  .pardava-day.is-today { border-color: var(--pardava-primary); background: color-mix(in srgb, var(--pardava-primary) 8%, var(--pardava-bg)); }
+  .pardava-day b { font-size: .78rem; }
+  .pardava-chip {
+    display: block; margin-top: 4px; padding: 4px 6px; border-radius: 8px;
+    font-size: .7rem; font-weight: 700; cursor: grab;
+    background: color-mix(in srgb, var(--pardava-accent) 14%, var(--pardava-surface));
+    color: var(--pardava-ink);
+  }
+  .pardava-chip.is-ok { background: color-mix(in srgb, var(--pardava-ok) 18%, transparent); }
+  .pardava-chip.is-wait { background: color-mix(in srgb, var(--pardava-warn) 18%, transparent); }
+  .pardava-chip.is-off { background: color-mix(in srgb, var(--pardava-danger) 18%, transparent); text-decoration: line-through; }
+
+  .pardava-daygrid { display: grid; grid-template-columns: 64px 1fr; gap: 6px; }
+  .pardava-slot {
+    min-height: 52px; border-radius: 10px; border: 1px dashed var(--pardava-line);
+    padding: 6px; background: var(--pardava-bg);
+  }
+  .pardava-slot.is-over { border-color: var(--pardava-primary); background: color-mix(in srgb, var(--pardava-primary) 10%, transparent); }
+
+  .pardava-patient {
+    display: flex; gap: 10px; align-items: center; padding: 8px 0;
+    border-bottom: 1px solid var(--pardava-line); cursor: pointer;
+  }
+  .pardava-mono {
+    width: 40px; height: 40px; border-radius: 50%;
+    display: grid; place-items: center; font-weight: 800;
+    background: color-mix(in srgb, var(--pardava-primary) 16%, transparent);
+    color: var(--pardava-primary-2);
+  }
+  .pardava-files { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .pardava-file {
+    border: 1px dashed var(--pardava-line); border-radius: 12px;
+    padding: 16px 10px; text-align: center; font-size: .8rem; color: var(--pardava-muted);
+    background: var(--pardava-bg);
+  }
+  .pardava-drug {
+    display: flex; justify-content: space-between; gap: 8px; align-items: center;
+    padding: 8px 0; border-bottom: 1px solid var(--pardava-line); cursor: pointer;
+  }
+  .pardava-progress {
+    height: 8px; border-radius: 99px; background: var(--pardava-line); overflow: hidden;
+  }
+  .pardava-progress > i { display: block; height: 100%; background: var(--pardava-grad); }
+  .pardava-chart { width: 100%; height: 220px; }
+  .pardava-chart--sm { height: 160px; }
+  .pardava-spark { width: 100%; height: 36px; margin-top: 8px; }
+  .pardava-legend { display: flex; flex-wrap: wrap; gap: 8px; font-size: .78rem; color: var(--pardava-muted); }
+  .pardava-legend i { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-left: 4px; }
+  .pardava-hours { display: grid; grid-template-columns: 90px 1fr; gap: 8px; align-items: center; margin: 8px 0; }
+  .pardava-toast {
+    position: fixed; bottom: 18px; left: 18px; z-index: 80;
+    background: var(--pardava-ink); color: #fff; padding: 10px 14px;
+    border-radius: 10px; opacity: 0; pointer-events: none; transition: .2s;
+  }
+  .pardava-toast.is-on { opacity: 1; }
+}
+
+@layer pardava-views {
+  .pardava-view { display: none; }
+  .pardava-view.is-on { display: block; animation: pardava-fade .32s var(--pardava-ease); }
+  @keyframes pardava-fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+}
+
+@layer pardava-responsive {
+  @media (max-width: 1100px) {
+    .pardava-app { grid-template-columns: 1fr; }
+    .pardava-sidebar {
+      position: fixed; inset: 0 0 0 auto; width: min(86vw, 280px);
+      transform: translateX(110%); transition: transform .28s var(--pardava-ease);
+      box-shadow: var(--pardava-shadow);
+    }
+    .pardava-app.is-nav .pardava-sidebar { transform: none; }
+    .pardava-span-8, .pardava-span-6, .pardava-span-4, .pardava-span-3 { grid-column: span 12; }
+    .pardava-clock { display: none; }
+  }
+  @media (max-width: 720px) {
+    .pardava-form-2, .pardava-files { grid-template-columns: 1fr; }
+    .pardava-cal { grid-template-columns: repeat(2, 1fr); }
+    .pardava-main { padding: 14px; }
+    .pardava-top { padding: 0 12px; }
+  }
+}
